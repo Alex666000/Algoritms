@@ -22,5 +22,5 @@ function bubbleSort(array) {
 }
 
 console.log('length', arr.length)
-console.log(bubbleSort(arr)) // O(n*n)
+console.log(bubbleSort(arr)) // O(n*n) -- vtytt 'aatrnbdysq
 console.log('count = ', count)
