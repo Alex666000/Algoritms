@@ -7,7 +7,6 @@ console.log(map.get(objKey));
 const set = new Set()
 
 
-//gggggggggggggggggggg
 set.add(5)
 set.add(5)
 set.add(5)

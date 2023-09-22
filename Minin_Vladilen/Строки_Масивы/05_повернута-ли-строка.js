@@ -19,7 +19,7 @@ function isStringRotated(source, test) {
     return false;
 }
 
-// 2 способ
+// 2 способ - Повернута ли строка:
 function isStringRotated(source, test) {
     return (source + source).includes(test) && source.length === test.length; // includes() - проверяет есть ли в строке подстрока которую ищем
 }

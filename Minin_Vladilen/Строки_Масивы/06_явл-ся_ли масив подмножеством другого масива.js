@@ -21,7 +21,7 @@ function arraySubset(source, subset) {
 // 2 способ:
 function arraySubset(source, subset) {
     const sourceSet = new Set(source);
-    return subset.every(val => sourceSet.has(val));} //  every проверяет, выполняется ли условие для каждого элемента массива.
+    return subset.every(val => sourceSet.has(val));} // every проверяет, выполняется ли условие для каждого элемента массива.
 
 console.log(arraySubset([2, 1, 3], [1, 2, 3])); // -> true
 console.log(arraySubset([2, 1, 1, 3], [1, 2, 3])); // -> true
