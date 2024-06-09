@@ -89,6 +89,7 @@ function countFruit(list) {
   for (let i = 0; i < list.length; i++) {
     let item = list[i]
 
+    // ключ
     if (count[item]) {
       count[item]++
     }
@@ -105,7 +106,7 @@ function countFruit(list) {
 console.log(countFruit(fruits))
 
 // Массив уникальных значений:
-/*const fruits = ['kiwi', 'apple', 'kiwi', 'kiwi']
+const fruits_1 = ['kiwi', 'apple', 'kiwi', 'kiwi']
 
 const uniqueItems = (list) => {
     const unique = {}
@@ -116,6 +117,4 @@ const uniqueItems = (list) => {
 
     return Object.keys(unique)
 }
-console.log(uniqueItems(fruits))*/
-
-//Создать функцию которая сгруппирует студентов по возрасту - на выходе получить обьект где ключ - возраст, а значение - массив студентов
+console.log(uniqueItems(fruits))
