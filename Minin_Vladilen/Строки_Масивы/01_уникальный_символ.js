@@ -35,28 +35,24 @@ ________________________________________________________________________________
 на котором он был вызван, или -1, если ничего не было найдено. Поиск по строке ведётся от конца к началу
 - Set -- берет и делает каждый сивол уникальным
  */
-
+// Напишите функцию, которая определяет уникальны ли все символы в строке. Регистр должен учитываться: `‘a’` и `‘A’` разные символы.
 // РЕШЕНИЕ:
 function isUnique(string) {
-    // 1 способ
-    for (let i = 0; i < string.length; i++) {
-        const char = string[i]; // текущий символ который проверяем;
-        //  i - индекс текущий === текущий элемент
-        if (string.lastIndexOf(char) !== i) { // метод строк который ищет символ -- вернет индекс
-            return false;
+    const unique = new Set()
+    for (const char of string) {
+        if (unique.has(char)) {
+            return false
         }
-
+        unique.add(char)
     }
-    return true; // значит все символы уникальны
 
-    // 2 способ
-    return new Set(string).size === string.length;
+    return true
 }
 
-console.log(isUnique("abcdef")); // -> true
-console.log(isUnique("1234567")); // -> true
-console.log(isUnique("abcABC")); // -> true
-console.log(isUnique("abcadef")); // -> false
+console.log(isUnique('abcdef')); // -> true
+console.log(isUnique('1234567')); // -> true
+console.log(isUnique('abcABC')); // -> true
+console.log(isUnique('abcadef')); // -> false
 
 
 

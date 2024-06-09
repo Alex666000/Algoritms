@@ -1,32 +1,34 @@
 const remapData = (dataArray) => {
-    return dataArray.reduce((acc, item) => {
-        for (let i = 1; i < item.length; i++) {
-            const productName = item[0]; // Используем первый элемент в подмассиве как название продукта
-            const person = item[i];
+   return  dataArray.reduce((acc, item) => {
+        const product = item[0]
+        const man = item[1]
 
-            if (acc[person]) {
-                if (!acc[person].includes(productName)) {
-                    acc[person].push(productName);
-                }
-            } else {
-                acc[person] = [productName];
-            }
+        if (!acc[man]) {
+            acc[man] = []
         }
 
-        return acc;
-    }, {});
+        if (acc[man] !== undefined) {
+            acc[man].push(product)
+        }
+
+        return acc
+    }, {})
 }
 
 console.log(
     remapData([
-        ['Помидоры', 'Аня', 'Женя'],
-        ['Огурцы', 'Женя', 'Аня'],
-        ['Рис', 'Аня', 'Саша'],
-        ['Лосось', 'Иван'],
+        ['Помидоры', 'Аня', 'Женя'], // {} item
+        ['Огурцы', 'Женя', 'Аня'], // item
+        ['Рис', 'Аня', 'Саша'], // item
+        ['Лосось', 'Иван'], // item
     ])
 );
 
-
+// Ожидаемый результат
 // {
-//     'Аня': ['Помидоры', 'Огурцы', 'Рис']
+ // person:     product
+//     'Аня': ['Помидоры', 'Огурцы', 'Рис'],
+//      'Женя': ['Помидоры',],
+//      'Иван': ['Рис', 'Лосось'],
+//      'Саша': ['Рис',],
 // }
