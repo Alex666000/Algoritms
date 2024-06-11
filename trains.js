@@ -4,7 +4,7 @@ const fruits = ['kiwi', 'apple', 'kiwi', 'kiwi']
 const countElem = (array) => {
   const count = {}
 
-  array.forEach(item => {
+  array.forEach(item => { // // когда пробегаемся "форич" всегда так сносим вниз фигурные скобки
     if (count[item]) {
       count[item]++
     }
