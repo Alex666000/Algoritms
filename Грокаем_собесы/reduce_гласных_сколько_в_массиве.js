@@ -37,17 +37,18 @@ console.log(countVowels(str))
 const str = 'Morning'
 console.log(countVowels(str)) */
 
-// 3 способ reduce через запятую начальное значение аккамулятора
+// 3 способ - "reduce" - через запятую, начальное значение аккамулятора + из reduce всегда надо что-то возвращать - значение
 
 const countVowels = (str) => {
-  const vowels = ['a', 'e', 'i', 'o', 'u']
+  const vowels = ['a', 'e', 'i', 'o', 'u'] // создали массив гласных - тк нет метода понимания что есть гласные?
 
-  return str.toLowerCase().split('').reduce((countSum, char) => {
-    if (vowels.includes(char)) return countSum + 1
-  }, 0)
+  const vowelsChar = str.toLowerCase().split('').reduce((countSum, char) => {
+    if (vowels.includes(char)) countSum++
 
-  return str
+    return countSum
+  }, 0) // через запятую, начальное значение аккамулятора
 
+  return vowelsChar // возвращаем из функции
 }
 
 const str = 'Morning'
