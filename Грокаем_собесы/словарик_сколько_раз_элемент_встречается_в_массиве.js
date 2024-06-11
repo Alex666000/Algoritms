@@ -55,16 +55,12 @@ const countElements = (array) => {
     /* итог будет: {kiwi: 0} - то есть изначально у нас:
     const objCount = {},
     objCount['kiwi'] = 0 // первый element итерации массива array будет: "kiwi"
-    console.log(obj) // итог первой итерации: {kiwi: 0} -- т.е мы в объекте: objCount сделали новое своиство как если бы сделали через
-    точку так: objCount.kiwi = 0, но мы сделали через квадратные скобки так: objCount[kiwi] = 0 значит в объекте objCount завелось
-    новое поле (свойство, ключ) как objCount = {kiwi: 0}
-    результат этого:
-    objCount[element] =
-    (objCount[element ||
-    0]) + 1
-    при первой итерации будет: {kiwi: 0}
+    console.log(obj) // итог первой итерации: {kiwi: 0} -- т.е мы в объекте: objCount завели новое своиство,как если бы сделали через
+    точку: objCount.kiwi = 0, но мы сделали через "квадратные" скобки так: objCount[kiwi] = 0, значит в объекте "objCount" появилось
+    новое поле (свойство, ключ), как objCount = {kiwi: 0}
+    результат этого: objCount[element] = (objCount[element || 0]) + 1 - при первой итерации будет: {kiwi: 0}
     */
-    // когда на следующих итерациях встретим "kiwi", то сделаем так - увеличим значение своиства objCount[element] на 1
+    // когда на следующих итерациях встретим "kiwi", то сделаем так - увеличим "значение" своиства: objCount[element] на 1
     // let objCount = {kiwi: 1} - далее все остальные итерации массива "array"
     objCount[element] = (objCount[element || 0]) + 1
 
