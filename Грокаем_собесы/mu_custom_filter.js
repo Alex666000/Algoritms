@@ -1,18 +1,19 @@
 // 2) Представьте, что метода filter не существует.
 // Реализуйте свой метод filter при помощи других методов массива
 
-// 1 способ в лоб:
 const myFilter = (array, callback) => {
   let result = []
 
-  array.forEach((item, index, array) => {
-    if (callback(item, index, array)) result.push(item) // в колбек передаем число item и на всякии случаи index, array
+  array.forEach((item, index, array) => { // в таких функциях что делаем сами должны указывать все параметры которые могут пригодиться
+    if (callback(item, index, array)) { // true если тогда:
+      result.push(item) // в колбек передаем число item и на всякии случаи index, array
+    }
   })
 
   return result
 }
 
-const resFilter = myFilter([4, 5, 8, 11, 14, 6], (number) => number % 2 === 0) // например наидем все четные числа в массиве чтобы понимать как filter() работает
+const resFilter = myFilter([4, 5, 8, 11, 14, 6], (number) => number % 2 === 0) // передаем колбек с условием
 console.log(resFilter)
 
 
