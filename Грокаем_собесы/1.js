@@ -1,7 +1,7 @@
 // 1) Создать функцию, которая принимает строку и преобразовывает каждую первую букву строки в заглавную и возвращает преобразованную строку
-//
+
 // Вход: "How can mirrors be real if our eyes aren't real"
-//
+
 // Выход: "How Can Mirrors Be Real If Our Eyes Aren't Real"
 
 function capitalizeFirstLetter(str) {
