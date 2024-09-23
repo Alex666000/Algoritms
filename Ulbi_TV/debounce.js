@@ -1,33 +1,33 @@
 // https://www.youtube.com/watch?v=hkrmyIecHR0&t=1703s 25 min
-// function fetchUrl(url) {
-//   console.log(`fetching ${url}...`, this.firstName);
-// };
+function fetchUrl(url) {
+  console.log(`fetching ${url}...`, this.firstName);
+};
+
+const user = {
+  firstName: 'Bob'
+};
+
+const debounce = (callback, delay) => {
+  let timer = null
+
+  if (timer) {
+    clearTimeout(timer)
+  }
+  return (...args) => {
+    timer = setTimeout(() => {
+      callback(...args)
+    }, delay)
+  }
+}
+
 //
-// const user = {
-//   firstName: 'Bob'
-// };
-//
-// const debounce = (callback, delay) => {
-//   let timer = null
-//
-//   if (timer) {
-//     clearTimeout(timer)
-//   }
-//   return (...args) => {
-//     timer = setTimeout(() => {
-//       callback(...args)
-//     }, delay)
-//   }
-// }
-//
-// //
-// const fetching = debounce(fetchUrl.bind(user), 300); // отменяются предыдущие вызовы и выполняется только последний, по задержке
-//
-// fetching(1);
-// fetching(2);
-// fetching(3);
-// fetching(4);
-// fetching(5);
+const fetching = debounce(fetchUrl.bind(user), 300); // отменяются предыдущие вызовы и выполняется только последний, по задержке
+
+fetching(1);
+fetching(2);
+fetching(3);
+fetching(4);
+fetching(5);
 
 /*
 2 задача - на replit.com
