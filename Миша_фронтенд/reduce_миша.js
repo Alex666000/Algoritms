@@ -84,6 +84,16 @@ const getUniqProducts = (isFruits: boolean) => {
   // Принимает объект - Возвращаем массив уникальных продуктов и их общую цену и количество в products массив
   // он извлекает все значения из объекта uniq и помещает их в массив
   return { products: Object.values(uniq), totalCount, totalPrice };
+  // При использовании Object.values(uniq) мы получим массив:
+  // [
+  //   { count: 5, price: 10, name: "apple" },
+  //   { count: 3, price: 15, name: "banana" }
+  // ]
+  // Так как "uniq" это (взяли только значения):
+  // {
+  //   apple: { count: 7, price: 10, name: "apple" },
+  //   banana: { count: 3, price: 15, name: "banana" }
+  // }
 };
 
 export default function App() {
