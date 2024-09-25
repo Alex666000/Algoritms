@@ -28,6 +28,7 @@ const getUniqProducts = (isFruits: boolean) => {
   //     name: "apple"
   //    }
   // }...............
+  // reduce - возвращает любой тип данных - если присваиваем в переменную то снзу возвращаем тип данных
   const uniq = PRODUCTS.reduce((acc, curObj) => {
     const { name, price, count } = curObj; // Деструктурируем текущее значение
 
@@ -84,6 +85,106 @@ const getUniqProducts = (isFruits: boolean) => {
   // он извлекает все значения из объекта uniq и помещает их в массив
   return { products: Object.values(uniq), totalCount, totalPrice };
 };
+
+export default function App() {
+  const [isFruits, setIsFruits] = useState(false); // Создаем состояние для чекбокса (показывать только фрукты)
+
+  // Получаем уникальные продукты и общие значения
+  const { products, totalCount, totalPrice } = getUniqProducts(isFruits);
+
+  // Обработчик изменения состояния чекбокса
+  const toggleIsFruits = (e) => {
+    setIsFruits(e.target.checked); // Меняем состояние на значение чекбокса
+  };
+
+  return (
+    // Возвращаем JSX разметку
+    <div className="wrapper">
+      <div>
+        <input
+          type="checkbox" // Чекбокс для выбора фрукты
+          id="isFruit" // ID для чекбокса
+          onChange={toggleIsFruits} // Обработчик изменения состояния
+          checked={isFruits} // Устанавливаем состояние чекбокса
+        />
+        Показывать только фрукты
+      </div>
+      <div>
+        Общее количество: <span>{totalCount}</span>
+        количество
+      </div>
+      <div>
+        Общая цена: <span>{totalPrice}</span>
+      </div>
+      <div>Список продуктов:</div>
+      <div className="cart-wrapper">
+        {products.map((fr) => {
+          // Проходим по массиву уникальных продуктов
+          return (
+            // Возвращаем компонент Cart для каждого продукта
+            <Cart
+              name={fr.name} // Название продукта
+              price={fr.price} // Цена продукта
+              count={fr.count} // Количество продукта
+              key={fr.name} // Уникальный ключ для React
+            />
+          );
+        })}
+      </div>
+    </div>
+  );
+}
+
+
+export default function App() {
+  const [isFruits, setIsFruits] = useState(false); // Создаем состояние для чекбокса (показывать только фрукты)
+
+  // Получаем уникальные продукты и общие значения
+  const { products, totalCount, totalPrice } = getUniqProducts(isFruits);
+
+  // Обработчик изменения состояния чекбокса
+  const toggleIsFruits = (e) => {
+    setIsFruits(e.target.checked); // Меняем состояние на значение чекбокса
+  };
+
+  return (
+    // Возвращаем JSX разметку
+    <div className="wrapper">
+      <div>
+        <input
+          type="checkbox" // Чекбокс для выбора фрукты
+          id="isFruit" // ID для чекбокса
+          onChange={toggleIsFruits} // Обработчик изменения состояния
+          checked={isFruits} // Устанавливаем состояние чекбокса
+        />
+        Показывать только фрукты
+      </div>
+      <div>
+        Общее количество: <span>{totalCount}</span>
+        количество
+      </div>
+      <div>
+        Общая цена: <span>{totalPrice}</span>
+      </div>
+      <div>Список продуктов:</div>
+      <div className="cart-wrapper">
+        {products.map((fr) => {
+          // Проходим по массиву уникальных продуктов
+          return (
+            // Возвращаем компонент Cart для каждого продукта
+            <Cart
+              name={fr.name} // Название продукта
+              price={fr.price} // Цена продукта
+              count={fr.count} // Количество продукта
+              key={fr.name} // Уникальный ключ для React
+            />
+          );
+        })}
+      </div>
+    </div>
+  );
+}
+
 
 export default function App() {
   const [isFruits, setIsFruits] = useState(false); // Создаем состояние для чекбокса (показывать только фрукты)
