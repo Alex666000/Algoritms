@@ -96,6 +96,8 @@ const getUniqProducts = (isFruits: boolean) => {
   // }
 };
 
+
+
 export default function App() {
   const [isFruits, setIsFruits] = useState(false); // Создаем состояние для чекбокса (показывать только фрукты)
 
