@@ -18,9 +18,8 @@ const getUniqProducts = (isFruits: boolean) => {
 
   // Используем reduce для преобразования массива PRODUCTS в объект с уникальными продуктами
   // из редюса возвращаем массив тут:
-
   // uniq: Это объект, который мы строим в процессе обработки массива PRODUCTS. В этом объекте
-  // ключами являются названия продуктов (например, "apple", "banana"),
+  // ключами являются названия продуктов (например, "apple", "banana"..),
   // а значениями — объекты с информацией о каждом продукте (количество, цена, имя).
   // {
   // "apple": {
@@ -28,7 +27,7 @@ const getUniqProducts = (isFruits: boolean) => {
   //     price: 10,
   //     name: "apple"
   //    }
-  // }
+  // }...............
   const uniq = PRODUCTS.reduce((acc, curObj) => {
     const { name, price, count } = curObj; // Деструктурируем текущее значение
 
@@ -44,9 +43,8 @@ const getUniqProducts = (isFruits: boolean) => {
 
         // Проверяем, есть ли уже этот продукт в аккумуляторе {}_те (по имени - с таким названием)
         if (!acc[name]) {
-          // строка acc[name] = { count, price, name }; добавляет новый объект для текущего продукта
-          // в аккумулятор "acc" под ключом name
-
+          // строка acc[name] = { count, price, name }; добавляет новый объект для текущего продукта - если его там не было
+          // в аккумулятор "acc" под ключом name. Изначально acc = { }
           // После выполнения строки acc[name] = { count, price, name };, acc станет:
           // {
           // "apple": {
@@ -86,6 +84,56 @@ const getUniqProducts = (isFruits: boolean) => {
   // он извлекает все значения из объекта uniq и помещает их в массив
   return { products: Object.values(uniq), totalCount, totalPrice };
 };
+
+export default function App() {
+  const [isFruits, setIsFruits] = useState(false); // Создаем состояние для чекбокса (показывать только фрукты)
+
+  // Получаем уникальные продукты и общие значения
+  const { products, totalCount, totalPrice } = getUniqProducts(isFruits);
+
+  // Обработчик изменения состояния чекбокса
+  const toggleIsFruits = (e) => {
+    setIsFruits(e.target.checked); // Меняем состояние на значение чекбокса
+  };
+
+  return (
+    // Возвращаем JSX разметку
+    <div className="wrapper">
+      <div>
+        <input
+          type="checkbox" // Чекбокс для выбора фрукты
+          id="isFruit" // ID для чекбокса
+          onChange={toggleIsFruits} // Обработчик изменения состояния
+          checked={isFruits} // Устанавливаем состояние чекбокса
+        />
+        Показывать только фрукты
+      </div>
+      <div>
+        Общее количество: <span>{totalCount}</span>
+        количество
+      </div>
+      <div>
+        Общая цена: <span>{totalPrice}</span>
+      </div>
+      <div>Список продуктов:</div>
+      <div className="cart-wrapper">
+        {products.map((fr) => {
+          // Проходим по массиву уникальных продуктов
+          return (
+            // Возвращаем компонент Cart для каждого продукта
+            <Cart
+              name={fr.name} // Название продукта
+              price={fr.price} // Цена продукта
+              count={fr.count} // Количество продукта
+              key={fr.name} // Уникальный ключ для React
+            />
+          );
+        })}
+      </div>
+    </div>
+  );
+}
+
 
 export default function App() {
   const [isFruits, setIsFruits] = useState(false); // Создаем состояние для чекбокса (показывать только фрукты)
