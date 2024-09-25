@@ -18,6 +18,17 @@ const getUniqProducts = (isFruits: boolean) => {
 
   // Используем reduce для преобразования массива PRODUCTS в объект с уникальными продуктами
   // из редюса возвращаем массив тут:
+
+  // uniq: Это объект, который мы строим в процессе обработки массива PRODUCTS. В этом объекте
+  // ключами являются названия продуктов (например, "apple", "banana"),
+  // а значениями — объекты с информацией о каждом продукте (количество, цена, имя).
+  // {
+  // "apple": {
+  //     count: 5,
+  //     price: 10,
+  //     name: "apple"
+  //    }
+  // }
   const uniq = PRODUCTS.reduce((acc, curObj) => {
     const { name, price, count } = curObj; // Деструктурируем текущее значение
 
@@ -49,8 +60,9 @@ const getUniqProducts = (isFruits: boolean) => {
           // каждого уникального продукта.
           acc[name] = { count, price, name }; // Если нет, добавляем его
         } else {
-          acc[name].price += curObj.price; // Если да, обновляем сумму и количество
-          acc[name].count += curObj.count;
+          // если был в аккумаляторе объект - обновим сумму и кол-во
+          acc[name].price = acc[name].price + curObj.price; // Если да, обновляем сумму и количество
+          acc[name].count = acc[name].count + curObj.count;
         }
       }
     } else {
@@ -66,13 +78,13 @@ const getUniqProducts = (isFruits: boolean) => {
     }
 
     return acc; // Возвращаем аккумулятор для следующей итерации
-  }, {}); // Начинаем с пустого объекта
+  }, {}); // Начинаем с пустого объекта итерации...
 
-  // Возвращаем массив уникальных продуктов и их общую цену и количество в products массив
+  // Принимает объект - Возвращаем массив уникальных продуктов и их общую цену и количество в products массив
+  // он извлекает все значения из объекта uniq и помещает их в массив
   return { products: Object.values(uniq), totalCount, totalPrice };
 };
 
-// Главный компонент приложения
 export default function App() {
   const [isFruits, setIsFruits] = useState(false); // Создаем состояние для чекбокса (показывать только фрукты)
 
@@ -121,6 +133,7 @@ export default function App() {
     </div>
   );
 }
+
 
 export const PRODUCTS: IProduct[] = [
   {
