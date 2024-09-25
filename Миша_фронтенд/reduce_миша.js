@@ -11,7 +11,7 @@ import "./styles.css"; // Импортируем стили
  * 3. Посчитать суммарную стоимость и количество всех продуктов. Чекбокс нужно тоже учитывать.
  **/
 
-// Функция для получения уникальных продуктов и их стоимости
+// Функция для получения уникальных продуктов (ФИЛЬТРАЦИЯ ЧЕРЕЗ "РЕДЮС") и их стоимости
 const getUniqProducts = (isFruits: boolean) => {
   let totalPrice = 0; // Переменная для хранения общей цены
   let totalCount = 0; // Переменная для хранения общего количества
@@ -84,6 +84,56 @@ const getUniqProducts = (isFruits: boolean) => {
   // он извлекает все значения из объекта uniq и помещает их в массив
   return { products: Object.values(uniq), totalCount, totalPrice };
 };
+
+export default function App() {
+  const [isFruits, setIsFruits] = useState(false); // Создаем состояние для чекбокса (показывать только фрукты)
+
+  // Получаем уникальные продукты и общие значения
+  const { products, totalCount, totalPrice } = getUniqProducts(isFruits);
+
+  // Обработчик изменения состояния чекбокса
+  const toggleIsFruits = (e) => {
+    setIsFruits(e.target.checked); // Меняем состояние на значение чекбокса
+  };
+
+  return (
+    // Возвращаем JSX разметку
+    <div className="wrapper">
+      <div>
+        <input
+          type="checkbox" // Чекбокс для выбора фрукты
+          id="isFruit" // ID для чекбокса
+          onChange={toggleIsFruits} // Обработчик изменения состояния
+          checked={isFruits} // Устанавливаем состояние чекбокса
+        />
+        Показывать только фрукты
+      </div>
+      <div>
+        Общее количество: <span>{totalCount}</span>
+        количество
+      </div>
+      <div>
+        Общая цена: <span>{totalPrice}</span>
+      </div>
+      <div>Список продуктов:</div>
+      <div className="cart-wrapper">
+        {products.map((fr) => {
+          // Проходим по массиву уникальных продуктов
+          return (
+            // Возвращаем компонент Cart для каждого продукта
+            <Cart
+              name={fr.name} // Название продукта
+              price={fr.price} // Цена продукта
+              count={fr.count} // Количество продукта
+              key={fr.name} // Уникальный ключ для React
+            />
+          );
+        })}
+      </div>
+    </div>
+  );
+}
+
 
 export default function App() {
   const [isFruits, setIsFruits] = useState(false); // Создаем состояние для чекбокса (показывать только фрукты)
