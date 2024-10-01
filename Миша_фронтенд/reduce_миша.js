@@ -96,8 +96,6 @@ const getUniqProducts = (isFruits: boolean) => {
   // }
 };
 
-
-
 export default function App() {
   const [isFruits, setIsFruits] = useState(false); // Создаем состояние для чекбокса (показывать только фрукты)
 
@@ -523,3 +521,124 @@ export const Cart = ({ name, price, count }: IProps) => {
     </div>
   );
 };
+
+// способ:
+import React, { useState, ChangeEvent } from "react";
+import type { IProduct } from "./models";
+import { PRODUCTS, FRUITS } from "./constants";
+import { Cart } from "./Cart";
+import "./styles.css";
+
+/** Задание:
+ * 1. Отрисовать корзины с продуктами используя <Cart />.
+ * 2. Добавить обработку чекбокса для того чтобы показывать только фрукты.
+ Список фруктов перечислен в массиве FRUITS.
+ * 3. Посчитать суммарную стоимость и количество всех продуктов. Чекбокс нужно тоже учитывать.
+ **/
+
+export default function App() {
+  const [isFruits, setIsFruits] = useState(false);
+
+  // Фильтрация продуктов в зависимости от состояния чекбокса
+  const filteredProducts = isFruits
+    ? PRODUCTS.filter((product) => FRUITS.includes(product.name))
+    : PRODUCTS;
+
+  // Подсчёт общей стоимости и количества продуктов
+  let totalPrice = 0;
+  let totalCount = 0;
+
+  filteredProducts.forEach((product) => {
+    totalPrice += product.price * product.count; // Считаем общую стоимость
+    totalCount += product.count; // Считаем общее количество
+  });
+
+  const toggleIsFruits = (e: ChangeEvent<HTMLInputElement>) =>
+    setIsFruits(e.target.checked);
+
+  return (
+    <div className="wrapper">
+      <div>
+        <input
+          type="checkbox"
+          id="isFruit"
+          checked={isFruits}
+          onChange={toggleIsFruits}
+        />
+        Показывать только фрукты: {isFruits ? "Да" : "Нет"}
+      </div>
+      <div>Общее количество: {totalCount}</div> {/* Общее количество продуктов */}
+      <div>Общая цена: {totalPrice} </div> {/* Общая стоимость продуктов */}
+      <div>Список продуктов:</div>
+      <div className="cart-wrapper">
+        {filteredProducts.map((product, index) => (
+          <Cart
+            key={index}
+            name={product.name}
+            price={product.price}
+            count={product.count}
+          />
+        ))}
+      </div>
+    </div>
+  );
+}
+
+// import React, { useState, ChangeEvent } from "react";
+// import type { IProduct } from "./models";
+// import { PRODUCTS, FRUITS } from "./constants";
+// import { Cart } from "./Cart";
+// import "./styles.css";
+//
+// /** Задание:
+//  * 1. Отрисовать корзины с продуктами используя <Cart />.
+//  * 2. Добавить обработку чекбокса для того чтобы показывать только фрукты.
+//    Список фруктов перечислен в массиве FRUITS.
+//  * 3. Посчитать суммарную стоимость и количество всех продуктов. Чекбокс нужно тоже учитывать.
+// **/
+//
+// export default function App() {
+//   const [isOnlyFruits, setIsOnlyFruits] = useState(false);
+//
+//   const toggleCheckbox = (e: ChangeEvent<HTMLInputElement>) =>
+//     setIsOnlyFruits(e.target.checked);
+//
+//   // редюс возвращает любой тип данных
+//   const result = PRODUCTS.reduce(
+//     (acc, product) => {
+//       if (isOnlyFruits || FRUITS.includes(product.name)) {
+//         acc.filteredProducts.push(product);
+//         acc.totalCount = acc.totalCount + product.count;
+//         acc.totalPrice = acc.totalPrice + product.price;
+//       }
+//
+//       // аккамулятор для след итерации
+//       return acc;
+//     },
+//     // "инит стейт" (называем переменные как угодно)
+//     { filteredProducts: [], totalCount: 0, totalPrice: 0 }
+//   );
+//   return (
+//     <div className="wrapper">
+//       <div>
+//         <input
+//           type="checkbox"
+//           id="isFruit"
+//           checked={isOnlyFruits}
+//           onChange={toggleCheckbox}
+//         />
+//         Показывать только фрукты: {isOnlyFruits ? "YES" : "NO"}
+//       </div>
+//       <div>Общее количество: {result.totalCount}</div>
+//       <div>Общая цена: {result.totalPrice}</div>
+//       <div>Список продуктов:</div>
+//       <div className="cart-wrapper">
+//         {result.filteredProducts.map(({ name, count, price }) => {
+//           return <Cart name={name} price={price} count={count} />;
+//         })}
+//       </div>
+//     </div>
+//   );
+// }
+
+

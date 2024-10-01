@@ -7,7 +7,7 @@ const user = {
   firstName: 'Bob'
 };
 
-const debounce = (callback, delay) => {
+const __debounce = (callback, delay) => {
   let timer = null
 
   if (timer) {
@@ -20,8 +20,8 @@ const debounce = (callback, delay) => {
   }
 }
 
-//
-const fetching = debounce(fetchUrl.bind(user), 300); // отменяются предыдущие вызовы и выполняется только последний, по задержке
+//Или не биндить а превратить в стрелочную функцию fetchUrl
+const fetching = __debounce(fetchUrl.bind(user), 300); // отменяются предыдущие вызовы и выполняется только последний, по задержке
 
 fetching(1);
 fetching(2);
