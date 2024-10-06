@@ -220,5 +220,125 @@
 // const AnyComponent3 = () => {
 //   return <ContainerFc height={5} Component={OtherFC} role="Макс" />; // Ошибка типов
 // };
-
-
+// Задача с собеса ЗП 300л
+// import { useEffect, useLayoutEffect, useState } from "react";
+// import { createRoot } from "react-dom/client";
+//
+// interface Product {
+//   description: string;
+//   id: string;
+//   info: string;
+//   name: string;
+// }
+//
+// type Shop = {
+//   coordinate: number[];
+//   id: string;
+//   name: string;
+//   pricelist: Record<string, string>;
+// };
+//
+// let counter = 10;
+// let started = false;
+//
+// const AppTimer = () => {
+//   const [timer, setTimer] = useState(10);
+//   const currency = "$";
+//
+//   const onDecrease = () => {
+//     if (counter > 0) {
+//       counter--;
+//       setTimer(counter);
+//     }
+//   };
+//
+//   useLayoutEffect(() => {
+//     if (!started) {
+//       started = true;
+//       const interval = setInterval(onDecrease, 1000);
+//
+//       return () => clearInterval(interval);
+//     }
+//   }, []);
+//
+//   return (
+//     <div>
+//       <div className="Controls">{timer}</div>
+//       <ProductList currency={currency} />
+//     </div>
+//   );
+// };
+//
+// const ProductList = ({
+//   currency,
+//   error = false,
+// }: {
+//   currency: string;
+//   error?: boolean;
+// }) => {
+//   const [products, setProducts] = useState<Product[]>([]);
+//   const [shops, setShops] = useState<Shop[]>([]);
+//
+//   // Если есть ошибка, не загружаем продукты
+//   if (error) {
+//     return;
+//   }
+//
+//   // @ts-ignore
+//   useEffect(() => {
+//     const fetchProducts = async () => {
+//       const productsResponse = await fetch(
+//         "https://my-json-server.typicode.com/cyberwalrus/demo/products"
+//       );
+//       const productsJson = await productsResponse.json();
+//       setProducts(productsJson);
+//     };
+//
+//     fetchProducts();
+//   }, [setProducts, setShops]);
+//
+//   const getShops = (id: string) => {
+//     let array: any[] = [];
+//     for (let i = 0; i < shops.length; i++) {
+//       const shop = shops[i];
+//       if (shop.pricelist[id]) {
+//         array = [...array, shop];
+//       }
+//     }
+//     return array;
+//   };
+//
+//   useLayoutEffect(() => {
+//     fetch("https://my-json-server.typicode.com/cyberwalrus/demo/shops")
+//       .then((res) => res.json())
+//       .then((res) => setShops(res));
+//   }, []);
+//
+//   return (
+//     <div className="productsWrapper">
+//       {/* render products */}
+//       {products.map(({ name, description, id }) => (
+//         <main className="products" key={id}>
+//           <h1 className="products-Item_green">{name}</h1>
+//           <h5>{description}</h5>
+//           <hr />
+//           {/* render shops list */}
+//           <ul className="postList">
+//             {(getShops(id) as Shop[]).map(({ name, pricelist }) => (
+//               <div className="post_header" key={name}>
+//                 {name} -{" "}
+//                 {Object.entries(pricelist).find(([key]) => id === key)?.[1]}
+//                 {currency}
+//               </div>
+//             ))}
+//           </ul>
+//         </main>
+//       ))}
+//     </div>
+//   );
+// };
+//
+// // Отображаем корневой компонент
+//
+// createRoot(document.getElementById("root") as HTMLElement).render(<AppTimer />);
+// setTimeout(() => console.clear(), 1988);
