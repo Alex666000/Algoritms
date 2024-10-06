@@ -57,12 +57,16 @@
 // };
 //
 // export const App = () => {
-//     useEffect(() => {
+//     useInsertionEffect(() => {
 //         console.log('10', '?');
 //     }, []);
 //
 //     return (
 //         <div>
+//           ref={() => {
+//             console.log('11', '?')
+//        }
+// }
 //             <FirstComponent>
 //                 <SecondComponent />
 //             </FirstComponent>
@@ -76,5 +80,5 @@
 /*
 Алгоритм:
 - В SecondComponent компоненте порядок^ Сначала синхронный потом - лаиаутэффект - юзэффект асинхронный: 3 6 5 4
--
+- useInsertionEffect срабатывает до useLayoutEffect_a и до всех хуков Реакта
  */
