@@ -2,7 +2,6 @@
 // import { useEffect, useLayoutEffect, useState } from "react";
 // import { createRoot } from "react-dom/client";
 //
-// // types
 // interface Product {
 //   description: string;
 //   id: string;
@@ -17,15 +16,12 @@
 //   pricelist: Record<string, string>;
 // };
 //
-// // Vars:
 // let counter = 10;
 // let started = false;
-// const currency = "$";
 //
-// // Components
 // const AppTimer = () => {
 //   const [timer, setTimer] = useState(10);
-//
+//   const currency = "$";
 //
 //   const onDecrease = () => {
 //     if (counter > 0) {
@@ -34,13 +30,13 @@
 //     }
 //   };
 //
-//   useLayoutEffect(() => {
-//     if (!started) {
-//       const interval = setInterval(onDecrease, 1000);
-//     }
+// useLayoutEffect(() => {
+//   if (!started) {
+//     const interval = setInterval(onDecrease, 1000);
+//   }
 //
-//     started = true;
-//   });
+//   started = true;
+// });
 //
 //   return (
 //     <div>
@@ -60,13 +56,13 @@
 //   }
 //
 //   // @ts-ignore
-//   useEffect(async () => {
+//   useEffect(async() => {
 //     const productsResponse = await fetch(
 //       "https://my-json-server.typicode.com/cyberwalrus/demo/products"
 //     );
 //     const productsJson = await productsResponse.json();
 //
-//     setProducts(productsJson);
+//     setProducts(productsJson)
 //   }, [setProducts, setShops]);
 //
 //   const getShops = (id: string) => {
@@ -84,7 +80,7 @@
 //     fetch("https://my-json-server.typicode.com/cyberwalrus/demo/shops")
 //       .then((res) => res.json())
 //       .then((res) => setShops(res));
-//   }, []);
+//   });
 //
 //   return (
 //     <div className="productsWrapper">
@@ -110,6 +106,7 @@
 // };
 //
 // // Отображаем корневой компонент
+//
 // createRoot(document.getElementById("root") as HTMLElement).render(<AppTimer />);
 // setTimeout(() => console.clear(), 1988);
 
@@ -117,7 +114,7 @@
 // ______________________________________________________________________________________________________________________________
 
 
-// РЕШЕНИЕ:
+        // РЕШЕНИЕ:
 // import { useEffect, useState } from "react";
 // import { createRoot } from "react-dom/client";
 //
