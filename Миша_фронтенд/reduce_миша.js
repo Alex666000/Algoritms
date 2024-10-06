@@ -1,3 +1,4 @@
+// --------------------------------------------------------------------------------------------------------------------------------------
 // export const PRODUCTS: IProduct[] = [
 //   {
 //     name: "apple",
@@ -70,8 +71,6 @@
 //     </div>
 //   );
 // };
-
-//
 // /** Задание:
 //  * 1. Отрисовать корзины с продуктами используя <Cart />.
 //  * 2. Добавить обработку чекбокса для того чтобы показывать только фрукты.
@@ -122,7 +121,7 @@
 //     </div>
 //   );
 // }
-
+// --------------------------------------------------------------------------------------------------------------------------------------
 //  --> Задача на ТС: Дженерики
 // import { FC } from "react";
 //
@@ -220,6 +219,7 @@
 // const AnyComponent3 = () => {
 //   return <ContainerFc height={5} Component={OtherFC} role="Макс" />; // Ошибка типов
 // };
+// --------------------------------------------------------------------------------------------------------------------------------------
 // Задача с собеса ЗП 300л
 // import { useEffect, useLayoutEffect, useState } from "react";
 // import { createRoot } from "react-dom/client";
@@ -252,14 +252,13 @@
 //     }
 //   };
 //
-//   useLayoutEffect(() => {
-//     if (!started) {
-//       started = true;
-//       const interval = setInterval(onDecrease, 1000);
+// useLayoutEffect(() => {
+//   if (!started) {
+//     const interval = setInterval(onDecrease, 1000);
+//   }
 //
-//       return () => clearInterval(interval);
-//     }
-//   }, []);
+//   started = true;
+// });
 //
 //   return (
 //     <div>
@@ -269,15 +268,9 @@
 //   );
 // };
 //
-// const ProductList = ({
-//   currency,
-//   error = false,
-// }: {
-//   currency: string;
-//   error?: boolean;
-// }) => {
+// const ProductList = ({ currency, error = false }: any) => {
 //   const [products, setProducts] = useState<Product[]>([]);
-//   const [shops, setShops] = useState<Shop[]>([]);
+//   const [shops, setShops] = useState<Array<Shop>>([]);
 //
 //   // Если есть ошибка, не загружаем продукты
 //   if (error) {
@@ -285,24 +278,21 @@
 //   }
 //
 //   // @ts-ignore
-//   useEffect(() => {
-//     const fetchProducts = async () => {
-//       const productsResponse = await fetch(
-//         "https://my-json-server.typicode.com/cyberwalrus/demo/products"
-//       );
-//       const productsJson = await productsResponse.json();
-//       setProducts(productsJson);
-//     };
+//   useEffect(async() => {
+//     const productsResponse = await fetch(
+//       "https://my-json-server.typicode.com/cyberwalrus/demo/products"
+//     );
+//     const productsJson = await productsResponse.json();
 //
-//     fetchProducts();
+//     setProducts(productsJson)
 //   }, [setProducts, setShops]);
 //
 //   const getShops = (id: string) => {
 //     let array: any[] = [];
-//     for (let i = 0; i < shops.length; i++) {
+//     for (var i = 0; i < shops.length; i++) {
 //       const shop = shops[i];
 //       if (shop.pricelist[id]) {
-//         array = [...array, shop];
+//         array = [...array, shop]; // на каждой итерации создается новый массив (((((:
 //       }
 //     }
 //     return array;
@@ -317,15 +307,14 @@
 //   return (
 //     <div className="productsWrapper">
 //       {/* render products */}
-//       {products.map(({ name, description, id }) => (
-//         <main className="products" key={id}>
+//       {products.map(({ name, description }) => (
+//         <main className="products">
 //           <h1 className="products-Item_green">{name}</h1>
-//           <h5>{description}</h5>
+//           <h2>{description}</h5>
 //           <hr />
-//           {/* render shops list */}
 //           <ul className="postList">
 //             {(getShops(id) as Shop[]).map(({ name, pricelist }) => (
-//               <div className="post_header" key={name}>
+//               <div className="post_header">
 //                 {name} -{" "}
 //                 {Object.entries(pricelist).find(([key]) => id === key)?.[1]}
 //                 {currency}
@@ -342,3 +331,131 @@
 //
 // createRoot(document.getElementById("root") as HTMLElement).render(<AppTimer />);
 // setTimeout(() => console.clear(), 1988);
+
+// РЕШЕНИЕ:
+// import { useEffect, useState } from "react";
+// import { createRoot } from "react-dom/client";
+//
+// // types
+// interface Product {
+//   description: string;
+//   id: string;
+//   info: string;
+//   name: string;
+// }
+//
+// type Shop = {
+//   coordinate: number[];
+//   id: string;
+//   name: string;
+//   pricelist: Record<string, string>;
+// };
+//
+// // AppTimer
+// const AppTimer = () => {
+//   const [timer, setTimer] = useState(10);
+//
+//   useEffect(() => {
+//     const interval = setInterval(() => {
+//       setTimer((prev) => {
+//         if (prev === 0) {
+//           clearInterval(interval); // Останавливаем таймер, когда он достигает 0
+//           return prev; // Возвращаем 0, чтобы не происходило дальнейшее обновление
+//         }
+//         return prev - 1; // Уменьшаем таймер на 1 каждую секунду
+//       });
+//     }, 1000);
+//
+//     return () => clearInterval(interval); // Очищаем интервал при размонтировании компонента
+//   }, []);
+//
+//   return (
+//     <div>
+//       <div className="Controls">{timer}</div>
+//       <ProductList />
+//     </div>
+//   );
+// };
+//
+// const currency = "$";
+//
+// // ProductList
+// interface ProductListProps {
+//   error?: boolean;
+// }
+//
+// const ProductList = ({ error = false }: ProductListProps) => {
+//   const [products, setProducts] = useState<Product[]>([]);
+//   const [shops, setShops] = useState<Shop[]>([]);
+//
+//   // Функция для получения продуктов с сервера
+//   useEffect(() => {
+//     const fetchProducts = async () => {
+//       try {
+//         const productsResponse = await fetch(
+//           "https://my-json-server.typicode.com/cyberwalrus/demo/products"
+//         );
+//         const productsJsonData: Product[] = await productsResponse.json(); // Типизируем данные как Product[]
+//         setProducts(productsJsonData);
+//       } catch (error) {
+//         console.error("Error fetching products:", error);
+//       }
+//     };
+//
+//     fetchProducts();
+//   }, []);
+//
+//   // Функция для получения магазинов с сервера
+//   useEffect(() => {
+//     const fetchShops = async () => {
+//       try {
+//         const shopsResponse = await fetch(
+//           "https://my-json-server.typicode.com/cyberwalrus/demo/shops"
+//         );
+//         const shopsJsonData: Shop[] = await shopsResponse.json(); // Типизируем данные как Shop[]
+//         setShops(shopsJsonData);
+//       } catch (error) {
+//         console.error("Error fetching shops:", error);
+//       }
+//     };
+//
+//     fetchShops();
+//   }, []);
+//
+//   // Функция для получения магазинов, которые продают товар по id
+//   const getShops = (id: string) => shops.filter((shop) => shop.pricelist[id]);
+//
+//   // Если есть ошибка, показываем null (ничего не рендерим)
+//   if (error) {
+//     return null;
+//   }
+//
+//   return (
+//     <ul className="productsWrapper">
+//       {products.map(({ name, description, id }) => (
+//         <li className="products" key={id}>
+//           <h2 className="products-Item_green">{name}</h2>
+//           <p>{description}</p>
+//           <hr />
+//           <ul className="postList">
+//             {/* Отображаем список магазинов для каждого продукта */}
+//             {getShops(id).map(({ name: shopName, pricelist, id: shopId }) => (
+//               <li className="post_header" key={shopId}>
+//                 {shopName} -{" "}
+//                 {/* Проверяем, существует ли ключ в pricelist, чтобы избежать ошибки */}
+//                 {pricelist[id] ? pricelist[id] : "Цена не указана"} {currency}
+//               </li>
+//             ))}
+//           </ul>
+//         </li>
+//       ))}
+//     </ul>
+//   );
+// };
+//
+// // Отображаем корневой компонент
+// createRoot(document.getElementById("root") as HTMLElement).render(<AppTimer />);
+//
+// // Дополнительный таймер для очистки консоли (опционально)
+// setTimeout(() => console.clear(), 1988);
+// --------------------------------------------------------------------------------------------------------------------------------------
