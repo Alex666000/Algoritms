@@ -5,74 +5,74 @@
 // `;
 //
 // const handleAsyncFirst = async () => {
-//   console.log('1', '?');
+//     console.log('1', '?'); // 1
 //
-//   requestIdleCallback( // requestIdleCallback - срабатывает в момент простоя браузера
-//     () => {
-//       console.log('2', '?');
-//     },
-//     { timeout: 1 }
-//   );
+//     requestIdleCallback( // requestIdleCallback ("асинхронен") - срабатывает в момент простоя браузера как setTimeout
+//         () => {
+//             console.log('2', '?');
+//         },
+//         { timeout: 1 }
+//     ); // макро
 //
-//   setTimeout(() => {
-//     console.log('3', '?');
-//   }, 100);
+//     setTimeout(() => {
+//         console.log('3', '?');
+//     }, 100); // макро
 //
-//   const dateStart = Date.now();
-//   let dateNow = Date.now();
+//     const dateStart = Date.now();
+//     let dateNow = Date.now();
 //
-//   // кусочек кода создает искуственную задержку: 200ms "синхрона" - но к простою браузера нельзя отнести её
-//   while (dateNow <= dateStart + 200) {
-//     dateNow = Date.now();
-//   }
+//     // кусочек кода создает искуственную задержку: 200ms "синхрона" - но к "простою" браузера нельзя отнести её
+//     while (dateNow <= dateStart + 200) {
+//         dateNow = Date.now();
+//     }
 // // 2 очереди микрозадач (выполнить все - потом 1 макро.. -> попадет в конец очереди микротасок)
 // // выполнится последней из микрозадач
-//   queueMicrotask(() =>
-//     Promise.resolve().then(() => {
-//       console.log('4', '?');
-//     })
-//   );
+//     queueMicrotask(() =>
+//         Promise.resolve().then(() => {
+//             console.log('4', '?'); // микро в микро -ляжет последнеи в очередь "микротасок" значит..
+//         })
+//     );
 //
-//   const handleAsyncSecond = async () => {
-//     setTimeout(() => {
-//       console.log('5', '?'); // первее, нет задержки
-//     });
+//     const handleAsyncSecond = async () => {
+//         setTimeout(() => { // макро
+//             console.log('5', '?'); // "первее", нет задержки
+//         });
 //
-//     const importantValue = new Promise((res) => {
-//       console.log('6', '?');
+//         const importantValue = new Promise((res) => {
+//             console.log('6', '?'); // +
 //
-//       Promise.resolve().then(() => {
-//         console.log('7', '?');
-//       });
+//             Promise.resolve().then(() => {
+//                 console.log('7', '?');
+//             });
 //
-//       requestAnimationFrame(() => { // requestAnimationFrame - после микро и перед таимаутами..рендер важен он первее!
-//         console.log('8', '?');
-//       });
+//             requestAnimationFrame(() => { // requestAnimationFrame - после "микр"о и перед таимаутами
+//                 console.log('8', '?');
+//             });
 //
-//       setTimeout(() => {
-//         console.log('9', '?');
-//         res();
-//       }, 100);
-//     });
+//             setTimeout(() => {
+//                 console.log('9', '?');
+//                 res(); // когда промисс зарезолвился можем идти дальше вниз после: "await importantValue";
+//             }, 100);
+//         });
 //
-//     await importantValue;
+//         await importantValue;
 //
-//     console.log('10', '?');
+//         console.log('10', '?');
 //
-//     setTimeout(() => console.log('11', '?'));
+//         setTimeout(() => console.log('11', '?')); // в очереди раньше чем 13
 //
-//     queueMicrotask(() => {
-//       console.log('12', '?');
+//         queueMicrotask(() => {
+//             console.log('12', '?');
 //
-//       setTimeout(() => console.log('13', '?'));
+//             setTimeout(() => console.log('13', '?'));
 //
-//       Promise.resolve().then(() => console.log('14', '?'));
-//     });
-//   };
+//             Promise.resolve().then(() => console.log('14', '?'));
+//         });
+//     };
 //
-//   await handleAsyncSecond();
+//     await handleAsyncSecond();
 //
-//   console.log('15', '?'); // раньше чем 14 тк раньше по скоупу положился в очередь
+//     console.log('15', '?'); // раньше чем 14 тк раньше по скоупу положился в очередь
 // };
 //
 // Promise.resolve().then(() => console.log('16', '?')); // 16 - первый в очереди микрозадач поэтому выполнится первым
