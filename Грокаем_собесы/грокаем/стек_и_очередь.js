@@ -1,23 +1,31 @@
-// "плоский массив" - вернуть надо развернутый массив
-// по факту args и будет наш стэк
-function flatten(...args) {
+// 1 - стек
+const flatten = (...args) => {
   const result = []
+  const stack = [...args] // чтобы не мутировать исходный массив
 
-  while (args.length) {
-    // берем первый элем из стэка и одновременно удаляем из него
-    const el = args.shift()
-    if (Array.isArray(el)) {
-      // если массив то мы его развернем и в самое начало положим
-      args.unshift(...el)
-      continue // далее возвращаемся в цикл while снова - чтобы не писать else - континье красивее
+  while (stack.length) { // пока стек существует
+    const firstElem = stack.shift()
+    if (Array.isArray(firstElem)) {
+      stack.unshift(...firstElem)
+    } else {
+      result.push(firstElem)
     }
-    result.push(el) // если это не массив пушим в результирующий
+
   }
 
   return result
-
 }
-
 
 console.log(flatten(-1, [2, [[3]]], 4, 5, [6, [7]]));
 // console.log(flatten('a', ['b', 2], 3, null, [[4], ['c']]));
+
+// 2 очередь: вычислить максимальное время которое потребуется чтобы обслужилась вся очередь в кинотеатр
+function queueTime(customers, n) {
+  const queue = [...customers]
+}
+
+console.log(queueTime([1], 1), 0);
+console.log(queueTime([1,2,3,4], 1), 10);
+console.log(queueTime([2,2,3,3,4,4], 2), 9);
+console.log(queueTime([1,2,3,4,5], 100), 5);
+
