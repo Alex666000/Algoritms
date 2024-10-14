@@ -19,4 +19,21 @@ const flatten = (...args) => {
 console.log(flatten(-1, [2, [[3]]], 4, 5, [6, [7]]));
 // console.log(flatten('a', ['b', 2], 3, null, [[4], ['c']]));
 
+// 2 плоский массив рекурсией
+/* const flatten = (...args) => {
+  const result = []
 
+  args.forEach((item) => {
+    if (Array.isArray(item)) {
+      // тк flatten возвращает массив (то можем деструктурировать функцию) то через запятую можем делать
+      // пушить несколько элементов
+      // если массив выполнение текущей функции flatten останавливается и происходит вызов от внутренних параметров:
+      // flatten(...item) - соответственно вызывается функция  flatten([2, [[3]]]) потом flatten([3]) и тд...
+      result.push(...flatten(...item))
+    } else {
+      result.push(item)
+    }
+  })
+
+  return result
+} */

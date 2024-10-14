@@ -32,7 +32,8 @@ console.log(factorial(4))
 // }
 
 // 3 плоскийй массив:
-const flatten = (...args) => {
+// 1 способ - в лоб рекурсией:
+ const flatten = (...args) => {
   const result = []
 
   args.forEach((item) => {
@@ -49,4 +50,19 @@ const flatten = (...args) => {
 
   return result
 }
+
+// 2 способ - reduce() - тк возвращаем массив редюсом удобнее
+const flatten = (...args) => {
+  return result = args.reduce((acc, item) => {
+    if (Array.isArray(item)) {
+      acc.push(...flatten(...item))
+    } else {
+      acc.push(item)
+    }
+    return acc
+  }, [])
+
+  return result
+}
+
 console.log(flatten(-1, [2, [[3]]], 4, 5, [6, [7]]));
