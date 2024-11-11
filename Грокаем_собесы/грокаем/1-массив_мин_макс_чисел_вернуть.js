@@ -7,21 +7,21 @@
 // • Если число делится на 5, то рядом с числом вывести строку  «Buzz».
 // • Если число делится одновременно на 3 и на 5, то рядом вывести «FizzBuzz».
 
-const cicle = () => {
-  for(let i = 0; i <= 100; i++) {
-    if (i % 5 === 0 && i % 3 === 0) {
-      console.log('FizzBuzz')
-    }
-    if (i % 5 === 0) {
-      console.log('Fizz')
-    }
-    if (i % 3 === 0) {
-      console.log('Buzz')
-    }
-  }
-}
-
-console.log(cicle())
+// const cicle = () => {
+//   for(let i = 0; i <= 100; i++) {
+//     if (i % 5 === 0 && i % 3 === 0) {
+//       console.log('FizzBuzz')
+//     }
+//     if (i % 5 === 0) {
+//       console.log('Fizz')
+//     }
+//     if (i % 3 === 0) {
+//       console.log('Buzz')
+//     }
+//   }
+// }
+//
+// console.log(cicle())
 
 
 // 2) Дан массив чисел
