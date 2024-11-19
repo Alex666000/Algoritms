@@ -88,3 +88,32 @@
 Синхронный во всех компонентах - useInsertionEffect во всех - ref конкретного компонента (ref и useLayoutEffect выполняются в один так в
  дочерней компоненте, потом переход на родителя) - useLayoutEffect_ы компонент - useEffect (дочка - родитель..)
  */
+
+// 28 min https://www.youtube.com/watch?v=DEP_9rrIVWk&list=PLIpOJPtzllpM-mzxXSF4npTEl7AE3dsa7&index=13
+// Что выведет в консоль?
+// const run = () => {
+//   setTimeout(() => {
+//     console.log('timeout');
+//   }, 0);
+//
+//   console.log(1);
+//
+//   new Promise((resolve) => {
+//     console.log('Promise');
+//     setTimeout(() => {
+//       console.log('777');
+//       resolve();
+//     }, 0);
+//   })
+//     .then(() => {
+//       console.log('then1');
+//     })
+//     .then(() => {});
+//
+//   console.log('then2');
+//   console.log(4);
+//
+//   setTimeout(() => {
+//     console.log('timeout2');
+//   }, 0);
+// }; // Ответ: 1 Promise 4 timeout 777 then1 then2 timeout2
