@@ -1,4 +1,4 @@
-// 1 что будет в консоль (https://interview.cups.online/live-coding/?room=6d002195-f1d5-4538-b9cf-69ddc684fbc6)
+//                  ЗАДАЧА: 1 что будет в консоль (https://interview.cups.online/live-coding/?room=6d002195-f1d5-4538-b9cf-69ddc684fbc6)
 // const userService = {
 //   currentFilter: 'active',
 //   users: [
@@ -59,9 +59,10 @@ const userService = {
     { name: 'Nick', status: 'deleted' }
   ],
   getFilteredUsers: function() {
-      const sels = this
+      const self = this // выше функции заводим self
+
     return this.users.filter(function(user) {
-      return user.status === sels.currentFilter;
+      return user.status === self.currentFilter;
     });
   }
 };
@@ -69,23 +70,23 @@ console.log(userService.getFilteredUsers());
 ---------------------------------------------
 Чтобы код падал при выполнении === ошибка пишем 'use strict'
  */
-
-// 2
-// // 1) const counter = {
-// //   count: 0,
-// //
-// //   increment: function() {
-// //     const incrementer = function() {
-// //       this.count += 1;
-// //     };
-// //
-// //     incrementer();
-// //   },
-// //
-// //   getCount: function() {
-// //     return this.count;
-// //   }
-// // };
-// //
-// // counter.increment();
-// // console.log('Current count:', counter.getCount());
+// ==========================================================================================================================================
+//                                                        ЗАДАЧА: 2
+// 1) const counter = {
+//   count: 0,
+//
+//   increment: function() {
+//     const incrementer = function() {
+//       this.count += 1;
+//     };
+//
+//     incrementer();
+//   },
+//
+//   getCount: function() {
+//     return this.count;
+//   }
+// };
+//
+// counter.increment();
+// console.log('Current count:', counter.getCount());
