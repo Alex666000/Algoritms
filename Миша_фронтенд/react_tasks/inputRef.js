@@ -63,6 +63,6 @@ if (root) {
 /*
 callbackRef: https://www.youtube.com/watch?v=MLWsLn_jeGc&t=1122s
 -----------------------------------------
-3 Способ решения
+3 Способ решения - callbackRef - при монтировании в el попадает ДОМ-нода те div-ка содержащая кнопку, а при размонтировании null
 {isVisible && <input ref={(el) => el?.focus()} autoFocus type="text" />}
  */
