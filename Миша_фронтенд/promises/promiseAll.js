@@ -30,6 +30,10 @@ function promiseAll(promisesArray) {
   });
 }
 
+const pr1 = new Promise((resolve) => resolve(6))
+const pr2 = new Promise((resolve) => resolve(8))
+console.log(promiseAll([pr1, pr2]).then((res) => console.log(res)))
+
 // Теория:
 // Когда мы запускаем обработку массива промисов, они работают асинхронно,
 // и их завершение происходит в разное время. Нам нужно знать, сколько промисов уже завершилось, чтобы понять, когда все они завершатся.
