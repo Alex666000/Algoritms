@@ -1,7 +1,7 @@
 // Приложение содержит кнопку, при нажатии на которую должен появиться инпут с фокусом. Но почему-то это не работает.
 // Расскажите, почему возникает такая проблема и предложите варианты её исправления.
 // Или проще: установить фокус инпуту чтобы встал фокус после клика по кнопке
-
+// Задача: 24 мин https://www.youtube.com/watch?v=EmTq_uf2P-0
 // Тут: https://stackblitz.com/edit/vitejs-vite-utgzjz?embed=1&file=src%2Fmain.tsx&hideExplorer=1
 import { useRef, useState } from "react";
 
@@ -21,6 +21,13 @@ export default function App() {
     </div>
   );
 }
+
+// Создается Реакт приложение
+const root = document.getElementById('root');
+if (root) {
+  createRoot(root).render(<App />);
+}
+
 // 1 Способ решения: через  useEffect:
 // export default function App() {
 //     const [isVisible, setIsVisible] = useState(false);
