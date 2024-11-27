@@ -193,11 +193,222 @@ export default function App() {
 
 
 
-
-
-
-
-
+// import { useState, useEffect, useCallback } from 'react';
+// import React from 'react';
+//
+// /*
+// Задача:
+// - В случае если в "апи" отправлено имя несуществующего персонажа, "апи" отвечает ошибкой 404:
+// {"error":"There is nothing here"}.
+// - Создать приложение, с помощью которого можно искать по списку героев.
+// Documentation (rickandmortyapi.com)
+// Требования:
+// - Одно поле для ввода поискового запроса, запрашивать данные по вводу текста в инпуте
+// - После получения ответа вывести список полученных сущностей (только name)
+// Индикация состояния загрузки
+// - Обработать кейс когда "апи" отвечает ошибкой
+// - Вынести ввод в инпут в дебаунс, вынести в кастомный хук логику получения characters в usePeopleQuery()
+// - сделать пагинацию + хук для нее кастомный
+// */
+// function getPeople(searcName, page = 1, options = {}) {
+//     return fetch(
+//         `https://rickandmortyapi.com/api/character/?name=${searcName}&page=${page}`,
+//         options
+//     ).then((res) => res.json());
+// }
+//
+// // Custom hooks
+// const useFetch = () => {
+//     // fetch state
+//     const [isLoading, setIsLoading] = useState(false);
+//     const [error, setError] = useState('');
+//     const [search, setSearch] = useState('');
+//     const [characters, setCharacters] = useState([]);
+//
+//     // Функция дебаунса
+//     const debounce = (callback, delay) => {
+//         let timeoutId;
+//         return (...args) => {
+//             clearTimeout(timeoutId);
+//             timeoutId = setTimeout(() => {
+//                 callback(...args);
+//             }, delay);
+//         };
+//     };
+//
+//     // Функция для обработки изменений в поле ввода
+//     const handleSearchChange = (e) => {
+//         setSearch(e.target.value);
+//     };
+//
+//     const fetchCharacters = useCallback(
+//         debounce(async () => {
+//             try {
+//                 setIsLoading(true);
+//                 setError('');
+//                 const res = await getPeople(search);
+//                 if (res.error) {
+//                     throw new Error(res.error);
+//                 }
+//                 setCharacters(res.results || []);
+//             } catch (err) {
+//                 setError(err.message);
+//             } finally {
+//                 setIsLoading(false);
+//             }
+//         }, 500),
+//         []
+//     );
+//
+//     // Логика получения данных с API
+//     useEffect(() => {
+//         fetchCharacters();
+//     }, [search]);
+//
+//     return { handleSearchChange, isLoading, error, characters, search };
+// };
+//
+//
+// Итоговое решение:
+// function getPeople(searcName, page = 1, options = {}) {
+//     return fetch(
+//         `https://rickandmortyapi.com/api/character/?name=${searcName}&page=${page}`,
+//         options
+//     ).then((res) => res.json());
+// }
+//
+// // Custom hooks
+// const useFetch = () => {
+//     // fetch state
+//     const [isLoading, setIsLoading] = useState(false);
+//     const [error, setError] = useState('');
+//     const [search, setSearch] = useState('');
+//     const [characters, setCharacters] = useState([]);
+//
+//     // Pagination state
+//     const [curentPage, setCurrentPage] = useState(1);
+//     // Если ткущая страница является последней не делать "Прев + 1" и дизеиблить кнопку
+//     const [maxPage, setMaxPage] = useState(0);
+//
+//     const goToPreviousPage = () => {
+//         if (curentPage === 1) return;
+//         setCurrentPage((prevPage) => prevPage - 1);
+//     };
+//
+//     const goToNextPage = () => {
+//         if (setCurrentPage === maxPage) {
+//             return;
+//         }
+//         setCurrentPage((prevPage) => prevPage + 1);
+//     };
+//
+//     // Функция дебаунса
+//     const debounce = (callback, delay) => {
+//         let timeoutId;
+//         return (...args) => {
+//             clearTimeout(timeoutId);
+//             timeoutId = setTimeout(() => {
+//                 callback(...args);
+//             }, delay);
+//         };
+//     };
+//
+//     // Функция для обработки изменений в поле ввода
+//     const handleSearchChange = (e) => {
+//         // при изменении в инпуте надо получать текущую страницу
+//         setCurrentPage(curentPage);
+//         setSearch(e.target.value);
+//     };
+//
+//     const fetchCharacters = useCallback(
+//         debounce(async (search, curentPage) => {
+//             try {
+//                 // Перед запросом всегда обнуляем ошибку
+//                 setError('');
+//                 setIsLoading(true);
+//                 const res = await getPeople(search, curentPage);
+//                 if (res.error) {
+//                     // если ошибка есть попадёт в catch()
+//                     throw new Error(res.error);
+//                 }
+//                 setCharacters(res.results || []); // массив пустой хороший тон
+//                 setMaxPage(res.info.pages);
+//             } catch (err) {
+//                 setError(err.message);
+//             } finally {
+//                 setIsLoading(false);
+//             }
+//         }, 500),
+//         []
+//     );
+//
+//     // Логика получения данных с API
+//     useEffect(() => {
+//         fetchCharacters(search, curentPage);
+//     }, [search, curentPage]); // всегда зависимости в эффекте
+//
+//     return {
+//         handleSearchChange,
+//         isLoading,
+//         error,
+//         characters,
+//         search,
+//         curentPage,
+//         maxPage,
+//         goToPreviousPage,
+//         goToNextPage,
+//     };
+// };
+//
+// // App
+// export default function App() {
+//     const {
+//         handleSearchChange,
+//         isLoading,
+//         error,
+//         characters,
+//         search,
+//         curentPage,
+//         maxPage,
+//         goToPreviousPage,
+//         goToNextPage,
+//     } = useFetch();
+//
+//     return (
+//         <div>
+//             <input
+//                 type={'search'}
+//                 value={search}
+//                 onChange={handleSearchChange}
+//                 placeholder={'search for characters'}
+//             />
+//             {isLoading && <div>Loading...</div>}
+//             // ошибку что поимали в catch() и ее засетали отрисуем
+//             {error && <div style={{ color: 'red' }}>{error}</div>}
+//             <ul>
+//                 {characters.length > 0 ? (
+//                     characters.map((person) => (
+//                         <li key={person.id}>{person.name}</li>
+//                     ))
+//                 ) : (
+//                     <li>No characters found!</li>
+//                 )}
+//             </ul>
+//             <button
+//                 onClick={goToPreviousPage}
+//                 disabled={curentPage === 1 || isLoading}
+//             >
+//                 Prev
+//             </button>
+//             <button
+//                 onClick={goToNextPage}
+//                 disabled={curentPage === maxPage || isLoading}
+//             >
+//                 Next
+//             </button>
+//         </div>
+//     );
+// }
 
 
 
