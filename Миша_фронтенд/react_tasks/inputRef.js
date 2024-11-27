@@ -28,7 +28,8 @@ if (root) {
   createRoot(root).render(<App />);
 }
 
-// 1 Способ решения: через  useEffect:
+// 1 Способ решения: через  useEffect: useEffect, который отслеживает изменение состояния isVisible. Это гарантирует, что фокус
+// будет установлен после того, как элемент появится в DOM.
 // export default function App() {
 //     const [isVisible, setIsVisible] = useState(false);
 //     const inputRef = useRef(null);
@@ -62,7 +63,9 @@ if (root) {
 // поставить автофокус -  {isVisible && <input ref={inputRef} autofocus type="text" />}
 /*
 callbackRef: https://www.youtube.com/watch?v=MLWsLn_jeGc&t=1122s
+Использование колбэк-рефа (callback ref) также является корректным способом установки фокуса на элемент, который динамически добавляется в DOM.
+Колбэк-реф позволяет получить доступ к элементу сразу после его появления.
 -----------------------------------------
 3 Способ решения - callbackRef - при монтировании в el попадает ДОМ-нода те div-ка содержащая кнопку, а при размонтировании null
-{isVisible && <input ref={(el) => el?.focus()} autoFocus type="text" />}
+{isVisible && <input ref={(input) => input?.focus()} autoFocus type="text" />}
  */
