@@ -38,8 +38,20 @@
 //
 // /** Тут не должно быть ошибок типов */
 // // eslint-disable-next-line @typescript-eslint/no-unused-vars
-// const AnyComponent = () => {
-//   return <ContainerFC height={5} Component={OtherFC} name="Макс" age={30} />;
+// const AnyComponent1 = () => {
+//   return <ContainerFC height={5} Component={OtherFC} name="Max" age={30} />;
+// };
+//
+// const AnyComponent2 = () => {
+//   return <ContainerFC height={5} Component={OtherFC} name={30} age="Max" />;
+// };
+//
+//
+// const AnyComponent3 = () => {
+//   return <ContainerFC height={5} Component={OtherFC} role="Max" />;
+// };
+// const AnyComponent4 = () => {
+//   return <ContainerFC height={5} Component={OtherFC} name="Max" />;
 // };
 
 // РЕШЕНИЕ:
