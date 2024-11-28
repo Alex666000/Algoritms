@@ -91,52 +91,69 @@
 //  * 3. Посчитать суммарную стоимость и количество всех продуктов. Чекбокс нужно тоже учитывать.
 // **/
 // Решено:
+// import React, { useState, ChangeEvent } from "react";
+// import type { IProduct } from "./models";
+// import { PRODUCTS, FRUITS } from "./constants";
+// import { Cart } from "./Cart";
+// import "./styles.css";
+//
+// /** Задание:
+//  * 1. Отрисовать корзины с продуктами используя <Cart />.
+//  * 2. Добавить обработку чекбокса для того чтобы показывать только фрукты.
+//    Список фруктов перечислен в массиве FRUITS.
+//  * 3. Посчитать суммарную стоимость и количество всех продуктов. Чекбокс нужно тоже учитывать.
+// **/
+//
 // export default function App() {
-//   const [isOnlyFruits, setIsOnlyFruits] = useState(false);
+//   const [hasFruits, setHasFruits] = useState(false);
 //
-//   const toggleCheckbox = (e: ChangeEvent<HTMLInputElement>) =>
-//     setIsOnlyFruits(e.target.checked);
+//   const { filteredProducts, totalProductCount, totalProductSum } =
+//     PRODUCTS.reduce(
+//       (acc, product) => {
+//         if (hasFruits && FRUITS.includes(product.name)) {
+//           acc.totalProductSum = acc.totalProductSum + product.price;
+//           acc.totalProductCount = acc.totalProductCount + product.count;
+//           acc.filteredProducts.push(product);
+//         } else if (!hasFruits) {
+//           acc.totalProductSum = acc.totalProductSum + product.price;
+//           acc.totalProductCount = acc.totalProductCount + product.count;
+//           acc.filteredProducts.push(product);
+//         }
 //
-//   // Редюс возвращает отфильтрованные продукты, общую сумму и количество
-//   const result = PRODUCTS.reduce(
-//     (acc, product) => {
-//       // Если чекбокс активен, фильтруем только фрукты
-//       if (isOnlyFruits && FRUITS.includes(product.name)) {
-//         acc.filteredProducts.push(product);
-//         acc.totalCount += product.count;
-//         acc.totalPrice += product.price * product.count;
-//       } else if (!isOnlyFruits) {
-//         // Если чекбокс не активен, добавляем все продукты
-//         acc.filteredProducts.push(product);
-//         acc.totalCount += product.count;
-//         acc.totalPrice += product.price * product.count;
-//       }
-//       return acc;
-//     },
-//     {
-//       filteredProducts: [] as IProduct[],
-//       totalCount: 0,
-//       totalPrice: 0,
-//     }
-//   );
+//         return acc;
+//       },
+//       { filteredProducts: [], totalProductSum: 0, totalProductCount: 0 }
+//     );
+//   /*
+//   const acc = {
+//     filteredProducts: []
+//     totalProductSum: 0,
+//     totalProductCount: 0
+//   }
+//   */
 //
 //   return (
 //     <div className="wrapper">
 //       <div>
 //         <input
+//           checked={hasFruits}
+//           onChange={(e) => setHasFruits(e.target.checked)}
 //           type="checkbox"
 //           id="isFruit"
-//           checked={isOnlyFruits}
-//           onChange={toggleCheckbox}
 //         />
-//         Показывать только фрукты: {isOnlyFruits ? "YES" : "NO"}
+//         Показывать только фрукты: {hasFruits ? "YES" : "NO"}
 //       </div>
-//       <div>Общее количество: {result.totalCount}</div>
-//       <div>Общая цена: {result.totalPrice}</div>
+//       <div>Общее количество:{totalProductCount}</div>
+//       <div>Общая цена:{totalProductSum} </div>
 //       <div>Список продуктов:</div>
 //       <div className="cart-wrapper">
-//         {result.filteredProducts.map(({ name, count, price }) => (
-//           <Cart key={`${name}-${price}`} name={name} price={price} count={count} />
+//         {filteredProducts.map(({ name, count, price }) => (
+//           <Cart
+//             key={`${name}-${price}`}
+//             name={name}
+//             price={price}
+//             count={count}
+//           />
 //         ))}
 //       </div>
 //     </div>
