@@ -91,14 +91,14 @@
 // // (например, OtherFC) и его пропсы. Цель — сделать так, чтобы TypeScript автоматически
 // // проверял, что переданные пропсы соответствуют требованиям переданного компонента.
 //
-// type IProps<T> = {
+// type IProps<T extends object> = {
 //   Component: FC<T>;
 //   height: number;
 //   // & T: Мы объединяем пропсы, которые ожидает ContainerFC (height, Component), с пропсами,
 //   // которые ожидает переданный компонент (Component).
-// } & T; // свои пропсы + пропсы что ожидает OtherFC
-//
-// const ContainerFC: FC<IProps> = (props) => {
+// } & Partial<T>; // свои пропсы + пропсы что ожидает OtherFC и допускаем что часть пропсов может быть не обязательной
+// // или & T & { [key: string]: any }; // Разрешаем любые дополнительные пропсы
+// const ContainerFC = <T extends object>(props: IProps<T>) => {
 //   const { Component, height, ...rest } = props;
 //
 //   return (
