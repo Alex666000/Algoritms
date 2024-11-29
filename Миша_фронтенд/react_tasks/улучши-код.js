@@ -75,7 +75,7 @@ export const randomList = () => {
       }
     };
 
-    fetchNumber();
+    fetchNumber(); // пишем сразу после функции запроса после fetchNumber...
   }, []);
 
   const handleScroll = () => setScroll(window.scrollY);
