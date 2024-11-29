@@ -24,7 +24,7 @@
 // Работать корректно для любого компонента, не зная заранее, какие пропсы он ожидает.
 // ContainerFC получает OtherFC в качестве Component.
 // Но OtherFC ожидает пропсы name и age. Если мы передадим что-то другое (например, role), TypeScript должен показать ошибку.
-
+//
 // type IProps = {
 //   Component: any;
 //   height: number;
