@@ -42,3 +42,12 @@
 // func1();
 //
 // console.log('12', '?');
+
+// --------- Задача:
+// 2 - EVENT LOOP (1 6 3 2 7 8 ) - 7 первее 8 тк 7 попала в очередь макротасок быстрее ("зарегистрировалась")
+// console.log(1);
+// setTimeout(() => console.log(2));
+// Promise.reject(3).catch(console.log); // микро
+// Promise.resolve(5).then(() => setTimeout(() => console.log(8),0)) // макротакса внутри микро - считается как макротаска
+// console.log(6);
+// setTimeout(() => console.log(7),0);
