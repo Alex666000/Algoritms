@@ -18,75 +18,64 @@
 // console.log('Hello console.');
 
 // РЕШЕНИЕ:
-// import { useState } from 'react';
 // import { createRoot } from 'react-dom/client';
+// import { useState } from 'react';
+//
+// type Message = {
+//     id: string | number;
+//     count: number;
+//     button?: boolean;
+//     text?: string;
+// };
 //
 // export function App() {
 //     const [inputText, setInputText] = useState('');
-//     const [messages, setMessages] = useState([]);
+//     const [messages, setMessages] = useState<Message[]>([]);
 //
-//     // Обработчик изменения в поле ввода
-//     const handleChangeInput = (e) => {
-//         setInputText(e.target.value);
+//     const handleChangeInputText = (e: React.ChangeEvent<HTMLInputElement>) => {
+//         setInputText(e.target.value.trim());
 //     };
 //
-//     // Обработчик добавления сообщения
-//     const handleAddMessage = (e) => {
-//         e.preventDefault();
-//
-//         // Проверяем, чтобы не добавлять пустые сообщения
-//         if (inputText.trim() === '') return;
-//
-//         const newMessage = { id: Date.now(), text: inputText, likes: 0 };
-//
-//         setMessages((prevState) => [...prevState, newMessage]);
+//     const addMessage = () => {
+//         const newMessage = { id: Date.now(), count: 0, text: inputText };
+//         setMessages((prevStateArray) => [...prevStateArray, newMessage]);
 //         setInputText('');
 //     };
 //
-//     // Обработчик лайка для сообщения
-//     const handleLikeMessage = (id) => {
-//         setMessages((prev) =>
-//             prev.map((message) =>
+//     const handleLikesCount = (id: any) => {
+//         setMessages((prevStateArray) =>
+//             prevStateArray.map((message) =>
 //                 id === message.id
-//                     ? { ...message, likes: message.likes + 1 }
+//                     ? { ...message, count: message.count + 1 }
 //                     : message
 //             )
 //         );
 //     };
 //
-//     // Общий счётчик лайков
-//     const totalLikesCount = messages.reduce(
-//         (acc, message) => acc + message.likes,
-//         0
-//     );
+//     const totalLikes = messages.reduce((acc, message) => {
+//         return acc + message.count;
+//     }, 0);
 //
 //     return (
-//         <div style={{ padding: '20px', fontFamily: 'Arial, sans-serif' }}>
-//             <h1>Total Likes: {totalLikesCount}</h1>
-//
-//             {/* Список сообщений */}
-//             <ul style={{ listStyle: 'none', padding: 0 }}>
-//                 {messages.map((message) => (
-//                     <li key={message.id}>
-//                         <span>
-//                             {message.text} (Likes: {message.likes})
-//                         </span>
-//                         <button onClick={() => handleLikeMessage(message.id)}>
-//                             Like
-//                         </button>
-//                     </li>
-//                 ))}
-//             </ul>
-//
-//             {/* Форма для добавления нового сообщения */}
-//             <form onSubmit={handleAddMessage} style={{ marginTop: '20px' }}>
-//                 <input
-//                     value={inputText}
-//                     onChange={handleChangeInput}
-//                     placeholder="Type a message"
-//                 />
-//                 <button type="submit">Add message</button>
-//             </form>
+//         <div>
+//             <h1>Likes: {totalLikes}</h1>
+//             <input value={inputText} onChange={handleChangeInputText} />
+//             <button onClick={addMessage}>Add new message</button>
+//             {messages.length > 0
+//                 ? messages.map((message) => {
+//                       return (
+//                           <li>
+//                               <span>Count:{message.count}</span>
+//                               <button
+//                                   onClick={() => handleLikesCount(message.id)}
+//                               >
+//                                   Like
+//                               </button>
+//                               {message.text}
+//                           </li>
+//                       );
+//                   })
+//                 : null}
 //         </div>
 //     );
 // }
@@ -94,7 +83,7 @@
 // // Рендер приложения
 // createRoot(document.getElementById('root')).render(<App />);
 
-/*
+/* Объяснение задачи -алгоритм мышления:
 - Алгоритм как мыслить: сначала пишем данные потом разметку под данные
 для каждого состояния - свой handler создаем + для добавления лаиков handler
 - стеит для инпута + стеит для добавления сообщений в массив что ввели в инпут
