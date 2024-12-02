@@ -46,8 +46,8 @@ function recursiveBinarySearch(array, item, start, end) {
 }
 
 console.log(recursiveBinarySearch(array, 0, 0, array.length))
-// console.log(binarySearch(array, 8));
-// console.log(count)
+// console_enet_loop.log(binarySearch(array, 8));
+// console_enet_loop.log(count)
 
 /*
 О log2n: за 4 итерации максимум наидем любой элемент в массиве

@@ -31,7 +31,7 @@ function selectionSort(array) {
 
 console.log(selectionSort(arr));
 console.log(arr.length); // O(n*n)
-// console.log("count = ", count);
+// console_enet_loop.log("count = ", count);
 
 /*
 // O(n*n) - О большое от n в квадрате

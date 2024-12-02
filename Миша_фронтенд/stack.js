@@ -5,17 +5,17 @@
 // `;
 //
 // const handleAsyncFirst = async () => {
-//     console.log('1', '?');
+//     console_enet_loop.log('1', '?');
 //
 //     requestIdleCallback(
 //         () => {
-//             console.log('2', '?');
+//             console_enet_loop.log('2', '?');
 //         },
 //         { timeout: 1 }
 //     );
 //
 //     setTimeout(() => {
-//         console.log('3', '?');
+//         console_enet_loop.log('3', '?');
 //     }, 100);
 //
 //     const dateStart = Date.now();
@@ -27,54 +27,54 @@
 //
 //     queueMicrotask(() =>
 //         Promise.resolve().then(() => {
-//             console.log('4', '?');
+//             console_enet_loop.log('4', '?');
 //         })
 //     );
 //
 //     const handleAsyncSecond = async () => {
 //         setTimeout(() => {
-//             console.log('5', '?');
+//             console_enet_loop.log('5', '?');
 //         });
 //
 //         const importantValue = new Promise((res) => {
-//             console.log('6', '?');
+//             console_enet_loop.log('6', '?');
 //
 //             Promise.resolve().then(() => {
-//                 console.log('7', '?');
+//                 console_enet_loop.log('7', '?');
 //             });
 //
 //             requestAnimationFrame(() => {
-//                 console.log('8', '?');
+//                 console_enet_loop.log('8', '?');
 //             });
 //
 //             setTimeout(() => {
-//                 console.log('9', '?');
+//                 console_enet_loop.log('9', '?');
 //                 res();
 //             }, 100);
 //         });
 //
 //         await importantValue;
 //
-//         console.log('10', '?');
+//         console_enet_loop.log('10', '?');
 //
-//         setTimeout(() => console.log('11', '?'));
+//         setTimeout(() => console_enet_loop.log('11', '?'));
 //
 //         queueMicrotask(() => {
-//             console.log('12', '?');
+//             console_enet_loop.log('12', '?');
 //
-//             setTimeout(() => console.log('13', '?'));
+//             setTimeout(() => console_enet_loop.log('13', '?'));
 //
-//             Promise.resolve().then(() => console.log('14', '?'));
+//             Promise.resolve().then(() => console_enet_loop.log('14', '?'));
 //         });
 //     };
 //
 //     await handleAsyncSecond();
 //
-//     console.log('15', '?');
+//     console_enet_loop.log('15', '?');
 // };
 //
-// Promise.resolve().then(() => console.log('16', '?'));
+// Promise.resolve().then(() => console_enet_loop.log('16', '?'));
 //
 // handleAsyncFirst();
 //
-// console.log('17', '?');
+// console_enet_loop.log('17', '?');

@@ -1,7 +1,7 @@
 // Дано:
 let nums = [1, 2, 3, 4, 23, 2]
 
-// ОР: console.log(currledSum(3)(4)) // Должно быть 7
+// ОР: console_enet_loop.log(currledSum(3)(4)) // Должно быть 7
 
 // Решение: каррирование возвращает функцию с цепочкой вызовов:
 const currledSum = (x) => {

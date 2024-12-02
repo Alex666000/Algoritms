@@ -39,15 +39,15 @@ type Result = "Field1" | "Field2"; - never убирается и остаетс�
  */
 
 // Задача 3:
-// Протипизируй чтобы тут console.log(getProperty(X, 'm')); ТС ругался на ключи которых нет в: const X = { a: 1, b: 2, c: 3, d: 4 }:
+// Протипизируй чтобы тут console_enet_loop.log(getProperty(X, 'm')); ТС ругался на ключи которых нет в: const X = { a: 1, b: 2, c: 3, d: 4 }:
 // const X = { a: 1, b: 2, c: 3, d: 4 };
 //
 // function getProperty(obj, key) {
 //   return obj[key];
 // }
 //
-// console.log(getProperty(X, 'a')); // 1
-// console.log(getProperty(X, 'm')); // undefined
+// console_enet_loop.log(getProperty(X, 'a')); // 1
+// console_enet_loop.log(getProperty(X, 'm')); // undefined
 
 // Решение:
 // const X = { a: 1, b: 2, c: 3, d: 4 };
@@ -56,6 +56,6 @@ type Result = "Field1" | "Field2"; - never убирается и остаетс�
 //   return obj[key];
 // }
 
-// console.log(getProperty(X, 'a')); // 1
-// console.log(getProperty(X, 'm')); // undefined
+// console_enet_loop.log(getProperty(X, 'a')); // 1
+// console_enet_loop.log(getProperty(X, 'm')); // undefined
 

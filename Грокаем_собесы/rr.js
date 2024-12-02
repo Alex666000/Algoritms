@@ -2,5 +2,5 @@
 //
 // const anagram = (strA, strB) => {}
 //
-// console.log(anagram('finder', 'Friend')) // true
-// console.log(anagram('hello', 'bye')) // false
+// console_enet_loop.log(anagram('finder', 'Friend')) // true
+// console_enet_loop.log(anagram('hello', 'bye')) // false

@@ -4,7 +4,7 @@
  */
 
 function deepEqual(a, b) {
-    if (Number.isNaN(a) && Number.isNaN(b)) { // разберемся сначала с задачей: console.log(deepEqual(NaN, NaN)); // -> true
+    if (Number.isNaN(a) && Number.isNaN(b)) { // разберемся сначала с задачей: console_enet_loop.log(deepEqual(NaN, NaN)); // -> true
         return true;
     }
 

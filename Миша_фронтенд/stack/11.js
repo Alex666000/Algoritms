@@ -29,23 +29,23 @@
 //
 // const queue = new Queue();
 //
-// console.log(queue.isEmpty()); // true
+// console_enet_loop.log(queue.isEmpty()); // true
 // queue.enqueue(1);
 // queue.enqueue(2);
 //
-// console.log(queue.peek()); // 1
+// console_enet_loop.log(queue.peek()); // 1
 //
-// console.log(queue.dequeue()); // 1
-// console.log(queue.dequeue()); // 2
-// console.log(queue.isEmpty()); // true
+// console_enet_loop.log(queue.dequeue()); // 1
+// console_enet_loop.log(queue.dequeue()); // 2
+// console_enet_loop.log(queue.isEmpty()); // true
 //
 // const queue = new Queue();
-// console.log(queue.isEmpty()); // true
+// console_enet_loop.log(queue.isEmpty()); // true
 // queue.enqueue(1);
 // queue.enqueue(2);
-// console.log(queue.peek()); // 1
-// console.log(queue.dequeue()); // 1
-// console.log(queue.dequeue()); // 2
-// console.log(queue.isEmpty()); // true
+// console_enet_loop.log(queue.peek()); // 1
+// console_enet_loop.log(queue.dequeue()); // 1
+// console_enet_loop.log(queue.dequeue()); // 2
+// console_enet_loop.log(queue.isEmpty()); // true
 // --------------------------------------------
 // Задача №2:

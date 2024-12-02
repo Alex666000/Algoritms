@@ -44,4 +44,4 @@ console.log(sortNums(array)); // [1, 2, 3, 9, 6, 13, 8, 5, 12]
 // }
 //
 // const arr = [1, 8, 3, 9, 12, 13, 2, 5, 6];
-// console.log(sortEvenNumbers(arr)); // [1, 2, 3, 9, 6, 13, 8, 5, 12]
+// console_enet_loop.log(sortEvenNumbers(arr)); // [1, 2, 3, 9, 6, 13, 8, 5, 12]

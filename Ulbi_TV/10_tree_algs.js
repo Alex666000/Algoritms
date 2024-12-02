@@ -83,7 +83,7 @@ const iteration = (tree) => {
 //
 
 console.log(iteration(tree))
-// console.log(recursive(tree))
+// console_enet_loop.log(recursive(tree))
 
 /*
 - Когда работаем с рекурсией, каждая вызванная функция внутри функции, добавляется в стек вызовом

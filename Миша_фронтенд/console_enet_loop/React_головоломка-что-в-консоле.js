@@ -1,10 +1,10 @@
 // import { useEffect, useLayoutEffect } from 'react';
 //
 // const FirstComponent = ({ children }) => {
-//     console.log('1', '?');
+//     console_enet_loop.log('1', '?');
 //
 //     useEffect(() => {
-//         console.log('2', '?');
+//         console_enet_loop.log('2', '?');
 //     }, []);
 //
 //     return (
@@ -16,20 +16,20 @@
 // };
 //
 // const SecondComponent = () => {
-//     console.log('3', '?'); // В SecondComponent компоненте порядок^ Сначала синхронный потом - лаиаутэффект - юзэффект асинхронный: 3 6 5 4
+//     console_enet_loop.log('3', '?'); // В SecondComponent компоненте порядок^ Сначала синхронный потом - лаиаутэффект - юзэффект асинхронный: 3 6 5 4
 //
 //     useEffect(() => {
-//         console.log('4', '?');
+//         console_enet_loop.log('4', '?');
 //     }, []);
 //
 //     useLayoutEffect(() => {
-//         console.log('5', '?');
+//         console_enet_loop.log('5', '?');
 //     }, []);
 //
 //     return (
 //         <div>
 //              ref={() => {
-//              console.log('6', '?')}
+//              console_enet_loop.log('6', '?')}
 //              }
 //             <p>In this input, you can enter the order of numbers</p>
 //             <input className="input" />
@@ -38,14 +38,14 @@
 // };
 //
 // const ThirdComponent = () => {
-//     console.log('7', '?');
+//     console_enet_loop.log('7', '?');
 //
 //     useEffect(() => {
-//         console.log('8', '?');
+//         console_enet_loop.log('8', '?');
 //     }, []);
 //
 //     useLayoutEffect(() => {
-//         console.log('9', '?');
+//         console_enet_loop.log('9', '?');
 //     }, []);
 //
 //     return (
@@ -58,13 +58,13 @@
 //
 // export const App = () => {
 //     useInsertionEffect(() => {
-//         console.log('10', '?');
+//         console_enet_loop.log('10', '?');
 //     }, []);
 //
 //     return (
 //         <div>
 //           ref={() => {
-//             console.log('11', '?')
+//             console_enet_loop.log('11', '?')
 //        }
 // }
 //             <FirstComponent>
@@ -93,27 +93,27 @@
 // Что выведет в консоль?
 // const run = () => {
 //   setTimeout(() => {
-//     console.log('timeout');
+//     console_enet_loop.log('timeout');
 //   }, 0);
 //
-//   console.log(1);
+//   console_enet_loop.log(1);
 //
 //   new Promise((resolve) => {
-//     console.log('Promise');
+//     console_enet_loop.log('Promise');
 //     setTimeout(() => {
-//       console.log('777');
+//       console_enet_loop.log('777');
 //       resolve();
 //     }, 0);
 //   })
 //     .then(() => {
-//       console.log('then1');
+//       console_enet_loop.log('then1');
 //     })
 //     .then(() => {});
 //
-//   console.log('then2');
-//   console.log(4);
+//   console_enet_loop.log('then2');
+//   console_enet_loop.log(4);
 //
 //   setTimeout(() => {
-//     console.log('timeout2');
+//     console_enet_loop.log('timeout2');
 //   }, 0);
 // }; // Ответ: 1 Promise 4 timeout 777 then1 then2 timeout2

@@ -17,7 +17,7 @@ const flatten = (...args) => {
 }
 
 console.log(flatten(-1, [2, [[3]]], 4, 5, [6, [7]]));
-// console.log(flatten('a', ['b', 2], 3, null, [[4], ['c']]));
+// console_enet_loop.log(flatten('a', ['b', 2], 3, null, [[4], ['c']]));
 
 // 2 плоский массив рекурсией
 /* const flatten = (...args) => {

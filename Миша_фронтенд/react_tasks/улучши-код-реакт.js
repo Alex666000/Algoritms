@@ -108,7 +108,7 @@
 // // Отображаем корневой компонент
 //
 // createRoot(document.getElementById("root") as HTMLElement).render(<AppTimer />);
-// setTimeout(() => console.clear(), 1988);
+// setTimeout(() => console_enet_loop.clear(), 1988);
 
 
 // ______________________________________________________________________________________________________________________________
@@ -180,7 +180,7 @@
 //         const productsJsonData: Product[] = await productsResponse.json(); // Типизируем данные как Product[]
 //         setProducts(productsJsonData);
 //       } catch (error) {
-//         console.error("Error fetching products:", error);
+//         console_enet_loop.error("Error fetching products:", error);
 //       }
 //     };
 //
@@ -197,7 +197,7 @@
 //         const shopsJsonData: Shop[] = await shopsResponse.json(); // Типизируем данные как Shop[]
 //         setShops(shopsJsonData);
 //       } catch (error) {
-//         console.error("Error fetching shops:", error);
+//         console_enet_loop.error("Error fetching shops:", error);
 //       }
 //     };
 //
@@ -239,5 +239,5 @@
 // createRoot(document.getElementById("root") as HTMLElement).render(<AppTimer />);
 //
 // // Дополнительный таймер для очистки консоли (опционально)
-// setTimeout(() => console.clear(), 1988);
+// setTimeout(() => console_enet_loop.clear(), 1988);
 

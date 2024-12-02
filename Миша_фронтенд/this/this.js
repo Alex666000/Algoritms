@@ -12,7 +12,7 @@
 //   }
 // };
 //
-// console.log(userService.getFilteredUsers());
+// console_enet_loop.log(userService.getFilteredUsers());
 // Ответ: [] - тк this указывает на контекст declaration функции: function(user) {} - у деклареишн this всегда указывает на "виндоу" -
 // this будет гл.объект "window" а у него нет метода currentFilter - и мы возвращаем массив внутри которого undefined значит пустой []
 /*
@@ -33,7 +33,7 @@ const userService = {
   }
 };
 
-console.log(userService.getFilteredUsers());
+console_enet_loop.log(userService.getFilteredUsers());
 --------------------------------------
 () =>:
 const userService = {
@@ -49,7 +49,7 @@ const userService = {
   }
 };
 
-console.log(userService.getFilteredUsers());
+console_enet_loop.log(userService.getFilteredUsers());
 ---------------------------------------------
 self:
 const userService = {
@@ -66,7 +66,7 @@ const userService = {
     });
   }
 };
-console.log(userService.getFilteredUsers());
+console_enet_loop.log(userService.getFilteredUsers());
 ---------------------------------------------
 Чтобы код падал при выполнении === ошибка пишем 'use strict'
  */
@@ -89,4 +89,4 @@ console.log(userService.getFilteredUsers());
 // };
 //
 // counter.increment();
-// console.log('Current count:', counter.getCount());
+// console_enet_loop.log('Current count:', counter.getCount());

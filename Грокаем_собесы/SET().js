@@ -58,4 +58,4 @@ const merge = (a, b) => {
   return result // отсортированный массив с числами из обоих массивов
 }
 
-// console.log(merge([1, 4, 6], [2, 3])); // [1, 2, 3, 4, 6]
+// console_enet_loop.log(merge([1, 4, 6], [2, 3])); // [1, 2, 3, 4, 6]

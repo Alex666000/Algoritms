@@ -3,6 +3,11 @@
 
 const removeDubl = (numbersArray) => {
   const mapa = {}
+  /* initialState:
+  const mapa = {
+    number: 0
+  }
+   */
   return numbersArray.reduce((acc, num) => {
   if(mapa[num]) {
     mapa[num] = mapa[num] + 1 // столько раз число встретилось в массиве

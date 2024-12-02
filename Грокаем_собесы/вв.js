@@ -21,16 +21,16 @@
 // Исходный массив: [1, 2, 3, 4, 5]
 // Сумма всех элементов: 1 + 2 + 3 + 4 + 5 = 15
 // Тестовые случаи:
-// console.log(sumArray([1, 2, 3, 4, 5]));
+// console_enet_loop.log(sumArray([1, 2, 3, 4, 5]));
 // // Output: 15
 //
-// console.log(sumArray([-1, 2, -3, 4, -5]));
+// console_enet_loop.log(sumArray([-1, 2, -3, 4, -5]));
 // // Output: -3
 //
-// console.log(sumArray([0, 0, 0, 0, 0]));
+// console_enet_loop.log(sumArray([0, 0, 0, 0, 0]));
 // // Output: 0
 //
-// console.log(sumArray([]));
+// console_enet_loop.log(sumArray([]));
 // // Output: 0
 // Пожалуйста, обратите внимание, что функция работает с массивом чисел и возвращает их сумму.
 //
@@ -87,16 +87,16 @@
 // Исходная строка: "hello"
 // Обратная строка: "olleh"
 // Тестовые случаи:
-// console.log(reverseString("hello"));
+// console_enet_loop.log(reverseString("hello"));
 // // Output: "olleh"
 //
-// console.log(reverseString("world"));
+// console_enet_loop.log(reverseString("world"));
 // // Output: "dlrow"
 //
-// console.log(reverseString("12345"));
+// console_enet_loop.log(reverseString("12345"));
 // // Output: "54321"
 //
-// console.log(reverseString(""));
+// console_enet_loop.log(reverseString(""));
 // // Output: ""
 // Пожалуйста, обратите внимание, что функция будет работать со строкой и вернёт эту строку в обратном порядке.
 //
@@ -116,16 +116,16 @@
 // Исходный массив: ["apple", "banana", "orange", "kiwi", "grape"]
 // Отсортированный массив по длине строк: ["kiwi", "grape", "apple", "orange", "banana"]
 // Тестовые случаи:
-// console.log(sortByLength(["apple", "banana", "orange", "kiwi", "grape"]));
+// console_enet_loop.log(sortByLength(["apple", "banana", "orange", "kiwi", "grape"]));
 // // Output: ["kiwi", "grape", "apple", "orange", "banana"]
 //
-// console.log(sortByLength(["a", "bc", "def", "ghij", "klmno"]));
+// console_enet_loop.log(sortByLength(["a", "bc", "def", "ghij", "klmno"]));
 // // Output: ["a", "bc", "def", "ghij", "klmno"]
 //
-// console.log(sortByLength([]));
+// console_enet_loop.log(sortByLength([]));
 // // Output: []
 //
-// console.log(sortByLength(["xyz", "pq", "rs", "tuvw"]));
+// console_enet_loop.log(sortByLength(["xyz", "pq", "rs", "tuvw"]));
 // // Output: ["pq", "rs", "xyz", "tuvw"]
 // Пожалуйста, обратите внимание, что функция будет работать с массивом строк, а элементы массива будут сравниваться по их длине для сортировки.
 //
@@ -151,11 +151,11 @@
 // }
 // Примеры:
 //
-// console.log(fibonacci(0)); // Вывод: 0
-// console.log(fibonacci(1)); // Вывод: 1
-// console.log(fibonacci(2)); // Вывод: 1
-// console.log(fibonacci(5)); // Вывод: 5
-// console.log(fibonacci(10)); // Вывод: 55
+// console_enet_loop.log(fibonacci(0)); // Вывод: 0
+// console_enet_loop.log(fibonacci(1)); // Вывод: 1
+// console_enet_loop.log(fibonacci(2)); // Вывод: 1
+// console_enet_loop.log(fibonacci(5)); // Вывод: 5
+// console_enet_loop.log(fibonacci(10)); // Вывод: 55
 // Ограничения:
 //
 // 0 <= n <= 30

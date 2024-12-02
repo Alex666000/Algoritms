@@ -17,7 +17,7 @@
  return cleanStr === cleanStr.split('').reverse().join('');
 }
 
-console.log(palindrom('А Роза упала на лапу Азора')); // true */
+console_enet_loop.log(palindrom('А Роза упала на лапу Азора')); // true */
 
 
 // 2: Решение:
@@ -39,4 +39,4 @@ console.log(palindrom('А Роза упала на лапу Азора')); // tr
   return result
 }
 
-console.log(uniq([2, 3, 1, 2, 5, 2, 1, 7, 4]))*/
+console_enet_loop.log(uniq([2, 3, 1, 2, 5, 2, 1, 7, 4]))*/
