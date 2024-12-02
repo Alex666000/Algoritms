@@ -19,7 +19,7 @@ async function add2(x) {
   const promise_a = resolveAfter2Seconds(20);
   const promise_b = resolveAfter2Seconds(30);
   // с такои записью: (await promise_a) + (await promise_b); одновременно 2 промиса запустяться - будет 2 сек
-  // такои синтакси переписать на Promise.all()...
+  // такои синтаксис: return x + (await promise_a) + (await promise_b), переписать на Promise.all()...
   const nums = await Promise.all([promise_a, promise_b])
   return x + nums[0] + nums[1];
   // return x + (await promise_a) + (await promise_b)
