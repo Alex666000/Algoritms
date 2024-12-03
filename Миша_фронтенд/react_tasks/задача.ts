@@ -152,49 +152,50 @@ const processedMessages = messages.map(({ id, ts, text, roomId }) => {
  */
 // --------------------------------------------------------------------------------------------------------------------------------------
 /*
-" ВТОРОЙ вариант решения: const fetchRooms = async () => {
-  // Получаем данные с двух эндпоинтов
-  const roomsDataResponse = await fetch("/rooms");
-  const messagesDataResponse = await fetch("/messages");
-
-  const roomsData: IRoom[] = await roomsDataResponse.json();
-  const messagesData: IMessage[] = await messagesDataResponse.json();
-
-  const result: ProcessedData = {};
-
-  // Создаем массив объектов ProcessedMessage
-  const processedMessages = messagesData.map((message) => {
-    const room = roomsData.find((room) => room.id === message.roomId);
-    return {
-      id: message.id,
-      text: message.text,
-      ts: new Date(message.ts), // Убедимся, что ts является объектом Date
-      user: message.user,
-      roomName: room ? room.name : "Unknown", // Обработка случаев, если комната не найдена
-    };
-  });
-
-  // Группируем сообщения по дням
-  processedMessages.forEach((message) => {
-    // Устанавливаем время начала дня
-    const dayStart = new Date(message.ts);
-    dayStart.setHours(0, 0, 0, 0);
-    const dayISO = dayStart.toISOString();
-
-    // Добавляем сообщения в соответствующий ключ
-    if (result[dayISO]) {
-      result[dayISO].push(message);
-    } else {
-      result[dayISO] = [message];
-    }
-  });
-
-  return result;
-};
-
-// Вызов функции
-fetchRooms()
-  .then((result) => console.log("Результат группировки сообщений:", result))
-  .catch((error) => console.error("Ошибка:", error));
+" ВТОРОЙ вариант решения:
+// const fetchRoomsAndMessages = async () => {
+//   // Шаг 1: Получаем данные параллельно
+//   const [rooms, messages]: [IRoom[], IMessage[]] = await Promise.all([
+//     fetch("/rooms").then((res) => res.json()),
+//     fetch("/messages").then((res) => res.json()),
+//   ]);
+//
+//   // Шаг 2: Преобразуем сообщения
+//   const processedMessages: ProcessedMessage[] = messages.map(({ id, text, ts, user, roomId }) => {
+//     // Ищем комнату с помощью find
+//     const room = rooms.find((room) => room.id === roomId);
+//     return {
+//       id,
+//       text,
+//       ts: new Date(ts), // Преобразуем в объект Date
+//       user,
+//       roomName: room ? room.name : "Unknown", // На случай, если комната не найдена
+//     };
+//   });
+//
+//   // Шаг 3: Группируем сообщения по дням
+//   const groupedMessages: ProcessedData = {};
+//
+//   processedMessages.forEach((message) => {
+//     // Получаем ISO-строку начала дня
+//     const dayStart = new Date(message.ts);
+//     dayStart.setHours(0, 0, 0, 0);
+//     const dayISO = dayStart.toISOString();
+//
+//     // Добавляем сообщение в соответствующий день
+//     if (!groupedMessages[dayISO]) {
+//       groupedMessages[dayISO] = [];
+//     }
+//     groupedMessages[dayISO].push(message);
+//   });
+//
+//   // Шаг 4: Возвращаем результат
+//   return groupedMessages;
+// };
+//
+// // Вызов функции
+// fetchRoomsAndMessages()
+//   .then((result) => console.log("Результат группировки сообщений:", result))
+//   .catch((error) => console.error("Ошибка:", error));
  */
 
