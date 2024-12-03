@@ -134,48 +134,47 @@ const processedMessages = messages.map(({ id, ts, text, roomId }) => {
  */
 // --------------------------------------------------------------------------------------------------------------------------------------
 /*
-" ВТОРОЙ вариант решения: const fetchRooms = async (): Promise<ProcessedData> => {
-  const roomsResponse = await fetch("/rooms");
-  const messagesResponse = await fetch("/messages");
+" ВТОРОЙ вариант решения: const fetchRooms = async () => {
+  // Получаем данные с двух эндпоинтов
+  const roomsDataResponse = await fetch("/rooms");
+  const messagesDataResponse = await fetch("/messages");
 
-  // Получаем массивы данных
-  const roomsData: IRoom[] = await roomsResponse.json();
-  const messagesData: IMessage[] = await messagesResponse.json();
+  const roomsData: IRoom[] = await roomsDataResponse.json();
+  const messagesData: IMessage[] = await messagesDataResponse.json();
 
-  // Оптимизация: создаем Map для быстрого доступа к roomName по roomId
-  const roomsMap: Record<number, string> = {};
-  roomsData.forEach((room) => {
-    roomsMap[room.id] = room.name;
-  });
-
-  // Преобразуем сообщения в ProcessedMessage
-  const processedMessages = messagesData.map(({ id, text, ts, user, roomId }) => ({
-    id,
-    text,
-    ts: new Date(ts), // Преобразование строки в объект Date
-    user,
-    roomName: roomsMap[roomId], // Быстрый доступ к названию комнаты
-  }));
-
-  // Группировка по дням
   const result: ProcessedData = {};
 
+  // Создаем массив объектов ProcessedMessage
+  const processedMessages = messagesData.map((message) => {
+    const room = roomsData.find((room) => room.id === message.roomId);
+    return {
+      id: message.id,
+      text: message.text,
+      ts: new Date(message.ts), // Убедимся, что ts является объектом Date
+      user: message.user,
+      roomName: room ? room.name : "Unknown", // Обработка случаев, если комната не найдена
+    };
+  });
+
+  // Группируем сообщения по дням
   processedMessages.forEach((message) => {
+    // Устанавливаем время начала дня
     const dayStart = new Date(message.ts);
-    dayStart.setHours(0, 0, 0, 0); // Устанавливаем время начала дня
+    dayStart.setHours(0, 0, 0, 0);
     const dayISO = dayStart.toISOString();
 
-    if (!result[dayISO]) {
-      result[dayISO] = [];
+    // Добавляем сообщения в соответствующий ключ
+    if (result[dayISO]) {
+      result[dayISO].push(message);
+    } else {
+      result[dayISO] = [message];
     }
-
-    result[dayISO].push(message);
   });
 
   return result;
 };
 
-// Вызов функции и вывод результата
+// Вызов функции
 fetchRooms()
   .then((result) => console.log("Результат группировки сообщений:", result))
   .catch((error) => console.error("Ошибка:", error));
