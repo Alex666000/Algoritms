@@ -42,3 +42,17 @@ console.log(c[a].a, c[b].b); // Результат: undefined "b"
 //   /* "[object Object]": {a: 'a'} // перезапишется  "[object Object]" на "[object Object]": {b: 'b'} после операции c[b] = b; */
 //   "[object Object]": {b: 'b'}
 // };
+
+/*
+Как исправить проблему?
+Чтобы использовать объекты a и b в качестве ключей, нужно использовать "Map". В отличие от обычных объектов, Map позволяет использовать в качестве ключей любые значения, включая объекты.
+
+const a = { a: "a" };
+const b = { b: "b" };
+const c = new Map();
+
+c.set(a, a);
+c.set(b, b);
+
+console.log(c.get(a).a, c.get(b).b); // "a" "b"
+ */
