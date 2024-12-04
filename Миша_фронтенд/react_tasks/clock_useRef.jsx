@@ -51,3 +51,42 @@ const Clock = () => {
 
   return <h1>{currentDate}</h1>;
 };
+
+// 2 Способ: через "requestAnimationFrame"
+// import { useEffect, useRef, useState } from 'react';
+// import { createRoot } from 'react-dom/client';
+//
+// function logMetric(date: string) {
+//   fetch('/api/metric', { method: 'POST', body: JSON.stringify({ date }) });
+// }
+//
+// const Clock = () => {
+//   const [currentDate, setCurrentDate] = useState(new Date().toISOString());
+//   const dateRef = useRef(currentDate);
+//   const rafRef = useRef<number | null>(null); // для хранения идентификатора requestAnimationFrame
+//
+//   useEffect(() => {
+//     const updateTime = () => {
+//       const now = new Date().toISOString();
+//       setCurrentDate(now);
+//       dateRef.current = now;
+//
+//       // Планируем следующий вызов через requestAnimationFrame
+//       rafRef.current = requestAnimationFrame(updateTime);
+//     };
+//
+//     // Запускаем обновление
+//     updateTime();
+//
+//     return () => {
+//       if (rafRef.current !== null) {
+//         cancelAnimationFrame(rafRef.current); // Очищаем requestAnimationFrame
+//       }
+//       logMetric(dateRef.current); // Отправляем последнюю дату
+//     };
+//   }, []);
+//
+//   return <h1>{currentDate}</h1>;
+// };
+//
+// createRoot(document.getElementById('root') as HTMLElement).render(<Clock />);
