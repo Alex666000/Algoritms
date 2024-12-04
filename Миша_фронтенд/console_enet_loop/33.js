@@ -1,4 +1,4 @@
-// Что будет выводится в консоль и через какое время?
+// Что будет выводится в консоль и через какое время? И написать Promise.all()
 function sleep(ms) {
   return new Promise((resolve) => setTimeout(() => resolve(ms), ms));
 }
@@ -32,4 +32,7 @@ sleep(1000)
     console.log(res); // 500
   });
 */
+// ---------------------------------------
+// Promise.all():
+const [pr1, pr2] = await Promise.all([sleep(1000), sleep(2000)])
 
