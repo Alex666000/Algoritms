@@ -19,8 +19,8 @@ function logMetric(date) {
 const Clock = () => {
   // const [currentDate, setCurrentDate] = useState(new Date().toISOString()); // так при каждом рендере срабатывать будет функция:
   // new Date() - поэтому пишем так: через колбек: useState(() => (new Date()).toISOString()):
-  const [currentDate, setCurrentDate] = useState(() => (new Date()).toISOString()); // так: (new Date()) чтобы вызвалась сначала new
-  // Date() потом от нее toISOString() иначе не сработает
+  const [currentDate, setCurrentDate] = useState(() => (new Date()).toISOString()); // так: (new Date()) - чтобы вызвалась сначала функция
+  // new Date(), она вернет объект, потом у него вызываем метод: toISOString() - иначе не сработает
 
   // Сохраняем последнюю дату в useRef
   const dateRef = useRef(currentDate);
