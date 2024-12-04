@@ -22,27 +22,18 @@ const Clock = () => {
   const [currentDate, setCurrentDate] = useState(() => (new Date()).toISOString()); // так: (new Date()) - чтобы вызвалась сначала функция
   // new Date(), она вернет объект, потом у него вызываем метод: toISOString() - иначе не сработает
 
-  // Сохраняем последнюю дату в useRef
+  // Сохраняем последнюю дату между рендерами в "useRef"
   const dateRef = useRef(currentDate);
-  // интервал - саид эффект поэтому в useEffect делаем
+
+  // "интервал" - это саид эффект - поэтому в "useEffect"_е делаем..
   useEffect(() => {
     const interval = setInterval(() => {
-      setCurrentDate(new Date().toISOString());
-      // на каждую секунду обновлять надо dateRef.current и обновленная дата придет в:logMetric(dateRef.current) при "unmount" :
-      dateRef.current = new Date().toISOString()
+      setCurrentDate((new Date()).toISOString());
+      // на каждую секунду обновлять надо "dateRef.current" (пишем в setInterval()) и обновленная дата придет
+      dateRef.current = new Date().toISOString() // в:logMetric(dateRef.current) при "unmount" :
     }, 1000);
 
-    'клипан'(очищаем
-    чтобы
-    не
-    было
-    утечек
-    памяти
-  ..)
-    срабатывает
-    при
-    'анмаунте'
-    компонента
+    // 'клипан'(очищаем чтобы не было утечек памяти.. срабатывает при 'анмаунте' компонента
     return () => {
       clearInterval(interval);
     };
@@ -50,9 +41,9 @@ const Clock = () => {
 
   // Чтобы разделить логику создадим еще один эффект
   useEffect(() => {
-    // logMetric(currentDate); // так берется дата из замыкания из стеита === самое первое а нам надо последнее
+    // logMetric(currentDate); // так берется дата из замыкания из "инишлстеита" === самая первая дата, а нам нужна последняя дата
 
-    // При анмаунте отправляем последнюю дату
+    // При анмаунте отправляем последнюю дату (ее обновили в первом эффекте)
     logMetric(dateRef.current);
     return () => {
     };
