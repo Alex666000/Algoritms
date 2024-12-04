@@ -197,5 +197,65 @@ const processedMessages = messages.map(({ id, ts, text, roomId }) => {
 // fetchRoomsAndMessages()
 //   .then((result) => console.log("Результат группировки сообщений:", result))
 //   .catch((error) => console.error("Ошибка:", error));
+
+// ТРЕТИЙ:
+// const fetchRoomsAndMessages = async () => {
+//   try {
+//     // Шаг 1: Получаем данные параллельно
+//     const [roomsResponse, messagesResponse] = await Promise.all([
+//       fetch("/rooms"),
+//       fetch("/messages"),
+//     ]);
+//
+//     // Шаг 2: Преобразуем ответы в JSON
+//     const rooms: IRoom[] = await roomsResponse.json();
+//     const messages: IMessage[] = await messagesResponse.json();
+//
+//     // Шаг 3: Преобразуем сообщения
+//     const processedMessages: ProcessedMessage[] = messages.map(({ id, text, ts, user, roomId }) => {
+//       // Ищем комнату с помощью find
+//       const room = rooms.find((room) => room.id === roomId);
+//       return {
+//         id,
+//         text,
+//         ts: new Date(ts), // Преобразуем в объект Date
+//         user,
+//         roomName: room ? room.name : "Unknown", // На случай, если комната не найдена
+//       };
+//     });
+//
+//     // Шаг 4: Группируем сообщения по дням
+//     const groupedMessages: ProcessedData = {};
+//
+//     processedMessages.forEach((message) => {
+//       // Получаем ISO-строку начала дня
+//       const dayStart = new Date(message.ts);
+//       dayStart.setHours(0, 0, 0, 0);
+//       const dayISO = dayStart.toISOString();
+//
+//       // Добавляем сообщение в соответствующий день
+//       if (!groupedMessages[dayISO]) {
+//         groupedMessages[dayISO] = [];
+//       }
+//       groupedMessages[dayISO].push(message);
+//     });
+//
+//     // Шаг 5: Возвращаем результат
+//     return groupedMessages;
+//   } catch (error) {
+//     console.error("Ошибка при обработке данных:", error);
+//     throw error; // Пробрасываем ошибку для возможной обработки выше
+//   }
+// };
+//
+// // Вызов функции
+// (async () => {
+//   try {
+//     const result = await fetchRoomsAndMessages();
+//     console.log("Результат группировки сообщений:", result);
+//   } catch (error) {
+//     console.error("Ошибка при вызове функции:", error);
+//   }
+// })();
  */
 
