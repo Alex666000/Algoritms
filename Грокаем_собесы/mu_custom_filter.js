@@ -2,19 +2,26 @@
 // Реализуйте свой метод filter при помощи других методов массива
 
 const myFilter = (array, callback) => {
-  let result = []
-
-  array.forEach((item, index, array) => { // в таких функциях что делаем сами должны указывать все параметры которые могут пригодиться
-    if (callback(item, index, array)) { // true если тогда:
-      result.push(item) // в колбек передаем число item и на всякии случаи index, array
+  // Проверка, что первый аргумент - это массив
+  if (!Array.isArray(array)) {
+    throw new Error('Первый аргумент должен быть массивом');
+  }
+  // Проверка, что второй аргумент - это функция
+  if (typeof callback !== 'function') {
+    throw new Error('Второй аргумент должен быть функцией');
+  }
+  const result = [];
+  // Итерируем по массиву и применяем колбек, добавляя элементы в результат
+  array.forEach((item, index, arr) => {
+    if (callback(item, index, arr)) {
+      result.push(item); // добавляем элемент, если callback вернул true
     }
-  })
+  });
+  return result;
+};
 
-  return result
-}
-
-const resFilter = myFilter([4, 5, 8, 11, 14, 6], (number) => number % 2 === 0) // передаем колбек с условием
-console.log(resFilter)
+console.log(myFilter([1, 2, 3, 4, 5], (number) => number > 2));
+// Вывод: [3, 4, 5]
 
 
 /*
