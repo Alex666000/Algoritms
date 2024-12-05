@@ -1,4 +1,5 @@
 // Что будет записано в  type Result?
+// 43 - https://www.youtube.com/watch?v=DEP_9rrIVWk&list=PLIpOJPtzllpM-mzxXSF4npTEl7AE3dsa7&index=13
 type ExampleType = {
   Field1: string;
   Field2: string;
