@@ -8,13 +8,15 @@ type ExampleType = {
 }
 
 // type T1<S, T> = { [K in keyof S]: S[K] extends T ? K : never }[keyof S];
-type T1<ExampleType, string> = { [K in keyof ExampleType]: ExampleType[K] extends 'string' ? K : never }[keyof ExampleType]; // циклом по ключам и
-// возвращаем итоговыи тип в Result
+type T1<ExampleType, string> = { [K in keyof ExampleType]: ExampleType[K] extends 'string' ? K : never }[keyof ExampleType];
 
 type Result = T1<ExampleType, string> // вызов
 
+// Черновик - для удобства глазу:
+// type T1<ExampleType, string> = { [K in keyof ExampleType]: ExampleType[K] extends 'string' ? K : never }[keyof ExampleType]; // циклом по ключам и
+// возвращаем итоговыи тип в Result
 // --------------------------------------------------------------------------------
-/* Краткое обьяснение ответа (как работает): "то что дало true возвращаем в итоговый ответ и type Result"
+/* Краткое обьяснение ответа (как работает): "то что дало true возвращаем в итоговый ответ (вернем тк тернарник возвращает без написания return ) и type Result"
 - После 1 итерации по ключам (проверяем первый ключ "Field1") в итоговыи тип Result ВОЗВРАЩАЕМ строку: 'Field1' (тк у обьекта ключи это строки)
 - После 2 итерации по ключам (проверяем первый ключ "Field2") в итоговыи тип Result ВОЗВРАЩАЕМ строку: 'Field2' (тк у обьекта ключи это строки)
 - После 3 итерации по ключам (проверяем первый ключ "Field3") в итоговыи тип Result ВОЗВРАЩАЕМ строку: never (у ничего нельзя взять )
