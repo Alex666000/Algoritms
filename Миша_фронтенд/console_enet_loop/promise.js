@@ -96,17 +96,23 @@ setTimeout(() => console.log(7), 0);
 // Макрозадачи выполняются в том порядке, в котором они были добавлены в очередь.
 // Макрозадача для console.log(7) была добавлена до того, как в микрозадаче добавилась макрозадача для console.log(8).
 // ---------------------------------------------------------------------
+console.log(1);
 
+setTimeout(() => console.log(2));
 
+Promise.resolve().then(() => console.log(3));
 
+Promise.resolve().then(() => setTimeout(() => console.log(4)));
 
+Promise.resolve().then(() => console.log(5));
 
+setTimeout(() => console.log(6));
 
-
-
-
-
-
+console.log(7);
+// Ответ: 1 7 3 5 2 6 4
+/*
+макро-в микро: Promise.resolve().then(() => setTimeout(() => console.log(4))) - в конце
+ */
 // ---------------------------------------------------------------------
 
 
