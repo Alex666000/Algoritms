@@ -1,3 +1,4 @@
+// 1 ЗАДАЧА : ---------------------------------------------------------------
 const promise = new Promise((resolve) => {
   console.log(1);
   setTimeout(() => {
@@ -16,7 +17,7 @@ promise.then((res) => {
 console.log(3);
 // 1 2 3 timerStart timerEnd success 4
 // когда промисс зарезолвится только потом отработает then
-// 2: ---------------------------------------------------------------
+// 2 ЗАДАЧА : ---------------------------------------------------------------
 const promise = new Promise((resolve) => {
   console.log(1);
   setTimeout(() => {
@@ -53,4 +54,33 @@ console.log(8);
 1 5 8 3 6 2 7 4 - макротаска в микротаске выполнится самои последнеи после остальных макротасок
  */
 // -----------------------------------------------------
-// 4:
+// 4 задача:
+const run = () => {
+    setTimeout(() => {
+        console.log('timeOut');
+    }, 0);
+};
+
+console.log(1);
+
+new Promise((resolve) => {
+    console.log('Promise');
+    setTimeout(() => {
+        console.log('777');
+        resolve();
+    }, 0);
+})
+    .then(() => {
+        console.log('then1');
+    })
+    .then(() => {
+        console.log('then2');
+    });
+
+console.log(4);
+
+setTimeout(() => {
+    console.log('timeOut2');
+}, 0);
+
+// // 1 Promise 4 timeOut 777 then1 then2 timeOut2
