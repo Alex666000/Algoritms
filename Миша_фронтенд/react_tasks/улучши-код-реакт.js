@@ -209,7 +209,9 @@
 //   if (error) {
 //     return null;
 //   }
-//
+//     // const priceList = { id: 1, price: '21$' };
+//     //  Object.entries(priceList) -> [ ['id', '1'], ['price', '21$'] ]
+
 //   return (
 //     <ul className="productsWrapper">
 //       {products.map(({ name, description, id }) => (
@@ -223,7 +225,7 @@
 //               <li className="post_header" key={shopId}>
 //                 {shopName} -{" "}
 //                 {/* Проверяем, существует ли ключ в pricelist, чтобы избежать ошибки */}
-//                 {pricelist[id] ? pricelist[id] : "Цена не указана"} {currency}
+//                 {pricelist[shopId] ? pricelist[shopId] : "Цена не указана"} {currency}
 //               </li>
 //             ))}
 //           </ul>
