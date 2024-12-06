@@ -1,7 +1,7 @@
 // 19 мин: https://www.youtube.com/watch?v=EDif0w660Qg&list=PLIpOJPtzllpM-mzxXSF4npTEl7AE3dsa7&index=2
 // Исходник: улучши исходный код допиши код доработай его
 // import React, { useEffect, useState } from 'react';
-// // Симуляция API запроса
+// // Симуляция API запроса за тасками
 // const fetchTasks = async () => {
 //   return new Promise((resolve, reject) => {
 //     setTimeout(() => {
@@ -59,7 +59,7 @@
 // };
 //
 // export default App;
-
+// --------------------------------------------------------------------------------------------------------------------------------------
 // Решение:
 // import React, {useEffect, useState} from 'react';
 //
@@ -83,7 +83,7 @@
 //         {/* такая проверка тк в псиках может быть выведем "нолик" */}
 //         {items.length
 //           ? items.map((item, index, id) => <li key={item.id}>{item.text}</li>)
-//           : null}
+//           :  <li>Другой контент</li>}
 //       </ul>
 //     </div>
 //   );
@@ -98,6 +98,9 @@
 //
 // const App = () => {
 //   const [tasks, setTasks] = useState([]);
+//   const [tasks, setTasks] = useState([]);
+//   const [error, setError] = useState('');
+//   const [isLoading, setIsLoading] = useState(false);
 //
 //   useEffect(() => {
 //     const handleRefreshTasks = async (e) => {
@@ -123,6 +126,8 @@
 //   return (
 //     <section>
 //       <h2>Примеры задач:</h2>
+//       {isLoading && <div>Loading...</div>}
+//       {error && <div style={{ color: 'red' }}>{error}</div>}
 //       <ToDoList items={ITEMS}/>
 //       <h3>Задачи:</h3>
 //       <ToDoList items={tasks || []}/>

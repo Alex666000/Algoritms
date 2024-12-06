@@ -137,7 +137,7 @@
 //
 //   useEffect(() => {
 //     const interval = setInterval(() => {
-//       setTimer((prev) => {
+//       setTimer((prev) => { // Каждый if с return возвращает значение из внутренней функции, переданной в setTimer. Это значение используется для обновления состояния timer
 //         if (prev === 0) {
 //           clearInterval(interval); // Останавливаем таймер, когда он достигает 0
 //           return prev; // Возвращаем 0, чтобы не происходило дальнейшее обновление
