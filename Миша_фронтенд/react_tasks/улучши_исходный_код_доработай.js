@@ -1,17 +1,21 @@
 // 19 мин: https://www.youtube.com/watch?v=EDif0w660Qg&list=PLIpOJPtzllpM-mzxXSF4npTEl7AE3dsa7&index=2
 // Исходник: улучши исходный код допиши код доработай его
 // import React, { useEffect, useState } from 'react';
-//
-// export const fetchTasks = async () => {
-//   // Симуляция API запроса
-//   return new Promise((resolve) => {
+// // Симуляция API запроса
+// const fetchTasks = async () => {
+//   return new Promise((resolve, reject) => {
 //     setTimeout(() => {
+//       const isError = Math.random() > 0.5;
+//
+//       if (isError) {
+//         reject(new Error('Failed'));
+//       }
+//
 //       resolve([
-//         { id: 4, text: 'Купить продукты' },
-//         { id: 5, text: 'Сделать зарядку' },
-//         { id: 6, text: 'Прочитать книгу' },
+//         { id: 1, text: 'rtyuo' },
+//         { id: 2, text: 'wsdc' },
 //       ]);
-//     }, 1000); // Задержка в 1 секунду
+//     }, 1000);
 //   });
 // };
 // const ToDoList = ({ items }) => {
@@ -49,7 +53,7 @@
 //         { id: 3, text: 'Выкинуть мусор' },
 //       ]} />
 //       <h2>Задачи:</h2>
-//       <ToDoList items={tasks || []} />
+//       <ToDoList items={tasks} />
 //     </div>
 //   );
 // };
@@ -57,66 +61,72 @@
 // export default App;
 
 // Решение:
-// import React, { useEffect, useState } from "react";
+// import React, {useEffect, useState} from 'react';
 //
 // export const fetchTasks = async () => {
 //   // Симуляция API запроса
 //   return new Promise((resolve) => {
 //     setTimeout(() => {
 //       resolve([
-//         { id: 4, text: "Купить продукты" },
-//         { id: 5, text: "Сделать зарядку" },
-//         { id: 6, text: "Прочитать книгу" },
+//         {id: 4, text: 'Купить продукты'},
+//         {id: 5, text: 'Сделать зарядку'},
+//         {id: 6, text: 'Прочитать книгу'},
 //       ]);
 //     }, 1000); // Задержка в 1 секунду
 //   });
 // };
-//
-// const ToDoList = ({ items }) => {
+// // по дефолту пустой массив укажем чтобы ТС не ругался
+// const ToDoList = ({items = []}) => {
 //   return (
 //     <div>
 //       <ul>
 //         {/* такая проверка тк в псиках может быть выведем "нолик" */}
 //         {items.length
-//           ? items.map((item, index, id) => <li key={id}>{item.text}</li>)
+//           ? items.map((item, index, id) => <li key={item.id}>{item.text}</li>)
 //           : null}
 //       </ul>
 //     </div>
 //   );
 // };
 //
-// // Глобальные переменные
+// // Глобальные переменные (вынесли в глобальную переменную чтобы при каждом рендере не создавался заново массив - ссылка не пересоздавалась)
 // const ITEMS = [
-//   { id: 1, text: "Полить цветы" },
-//   { id: 2, text: "Помыть машину" },
-//   { id: 3, text: "Выкинуть мусор" },
-// ]; // вынесли в глобальную переменную чтобы при каждом рендере не создавалось заново
+//   {id: 1, text: 'Полить цветы'},
+//   {id: 2, text: 'Помыть машину'},
+//   {id: 3, text: 'Выкинуть мусор'},
+// ]; // вынесли в глобальную переменную чтобы при каждом рендере не создавался заново массив - ссылка не пересоздавалась
 //
 // const App = () => {
 //   const [tasks, setTasks] = useState([]);
 //
 //   useEffect(() => {
 //     const handleRefreshTasks = async (e) => {
-//       if (e.key === "r") {
-//         const tasks = await fetchTasks();
-//         setTasks(tasks);
+//       if (e.key === 'r') {
+// // Запрос на сервер оборачиваем в try catch
+//         try {
+//           const tasks = await fetchTasks();
+//           setTasks(tasks);
+//         } catch (error) {
+//           console.log(error);
+//         }
 //       }
 //     };
-//
-//     document.addEventListener("keydown", handleRefreshTasks);
+//     document.addEventListener('keydown', handleRefreshTasks);
 //
 //     return () => {
-//       document.removeEventListener("keydown", handleRefreshTasks);
+//       document.removeEventListener('keydown', handleRefreshTasks);
 //     };
-//   });
+// // Тут handleRefreshTasks - вызывать не надо! Тк она вызывается на событие "keydown"
+//   }, []);
 //
+//   // section вместо div так семантичнее правильнее тк внутри есть заголовок + h3 сделали вместо <h2>Задачи:</h2>
 //   return (
-//     <div>
+//     <section>
 //       <h2>Примеры задач:</h2>
-//       <ToDoList items={ITEMS} />
-//       <h2>Задачи:</h2>
-//       <ToDoList items={tasks || []} />
-//     </div>
+//       <ToDoList items={ITEMS}/>
+//       <h3>Задачи:</h3>
+//       <ToDoList items={tasks || []}/>
+//     </section>
 //   );
 // };
 //
