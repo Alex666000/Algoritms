@@ -57,7 +57,7 @@ const randomNumber = () => Promise.resolve(randomInteger(9000, 11000));
 export const RandomList = () => {
    const [testData, setTestData] = useState([]);
   const [number, setNumber] = useState(0);
-  const [scroll, setScroll] = useState(window.scrollY);
+  const [scroll, setScroll] = useState(window.scrollY); // Для скролла добавил бы тротлинг
 
   useEffect(() => {
     for (let i = 0; i < number; i++) {
@@ -85,19 +85,20 @@ export const RandomList = () => {
  };
   });
 
+// el - динамическое значение - будет меняться при изменении number - лучше index не использовать
    return (
-    <div>
-      <div>Количество справочников: {number} </div>
-      <div>Scroll: {scroll}</div>
-      <div>Список полученных значений</div>
+    <section>
+      <h2>Количество справочников: {number} </h2>
+      <p>Scroll: {scroll}</p>
+      <ul>Список полученных значений</div>
       <div style={{ height: 400, overflow: "hidden" }}>
         {testData.map((el, index) => (
-          <div style={{ height: 20 }}>
+          <li style={{ height: 20 }}>
             Справочник {index}
-          </div>
+          </li>
         ))}
-      </div>
-    </div>
+      </ul>
+    </section>
   );
 
 Проблемы в текущем коде
@@ -112,11 +113,11 @@ testData — это внешний массив, который изменяет
 Решение: Сохранить функцию-обработчик в переменной и удалить именно её в клинапе эффекта
 5. Отсутствие уникальных ключей для элементов списка
 В методе .map отсутствуют уникальные ключи для элементов списка. Это может привести к проблемам при обновлении списка - индекс опасно
- писать лучше id...
+писать лучше id...
 Решение: Использовать уникальные индексы или значения в качестве ключей.
 6. Рендеринг большого количества элементов
 Если число number будет большим, например, 10 000, это может сильно нагружать интерфейс. (const randomNumber = () => Promise.resolve(randomInteger(9000, 11000));)
-Решение: Использовать "виртуализацию" для отображения длинных списков (например, библиотеку react-window или аналог).
+Решение: Использовать "виртуализацию" или пагинацию для отображения длинных списков (например, библиотеку react-window или аналог).
 7 Верстка - ul li и тд... Вынести стили из style, в css,
 8. window.addEventListener('scroll', () => setScroll(window.scrollY));
 Здесь каждый раз создаётся новая анонимная функция (() => setScroll(window.scrollY)) при каждом вызове useEffect. Это приводит к двум проблемам:
