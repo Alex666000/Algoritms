@@ -54,8 +54,8 @@ function randomInteger(min, max) {
 // имитируем запрос к серверу, просто получаем число асинхронно
 const randomNumber = () => Promise.resolve(randomInteger(9000, 11000));
 
-export const randomList = () => {
-  const [data, setData] = useState([]);
+export const RandomList = () => {
+   const [testData, setTestData] = useState([]);
   const [number, setNumber] = useState(0);
   const [scroll, setScroll] = useState(window.scrollY);
 
@@ -78,9 +78,10 @@ export const randomList = () => {
     fetchNumber(); // пишем сразу после функции запроса после fetchNumber...
   }, []);
 
-  const handleScroll = () => setScroll(window.scrollY);
+  const handleScroll = () => setScroll(window.scrollY); // Эта функция остаётся неизменной, и её ссылка передаётся в addEventListener и removeEventListener
 
-  window.addEventListener("scroll", handleScroll);
+  window.addEventListener("scroll", handleScroll); // При каждом ререндере компонента создаётся новая стрелочная функция - поэтому
+   // вынесли в handleScroll иначе отписка не будет происходить - будет засоряться память в браузере
  };
   });
 
