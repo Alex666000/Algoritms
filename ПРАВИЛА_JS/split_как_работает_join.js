@@ -10,13 +10,14 @@ const str = 'Привет как Дела' // Порядок слов остав
 // join(): ---------------------------------------------------------------------------------------------------------------------------
 // join('') - без пробелов между буквами (словами): "тевирПкакалеД"
 // join(' ') - ставит пробелы между буквами (словами): "тевирП как алеД"
+
+// Пример:
 const reverseStr = (str) => {
-  return str.split(' ').reduce((acc, word) => { // ['Привет','как' ,'Дела']
-    const reversedWord = word.split('').reverse().join('')
-    acc.push(reversedWord)
+  return str.split(' ').reduce((acc, word) => {
+    const revertedWord = word.split('').reverse().join('')
+    acc.push(revertedWord)
     return acc
   }, []).join(' ')
-
 }
 
 console.log(reverseStr('Привет как Дела'))
