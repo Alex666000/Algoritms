@@ -15,6 +15,7 @@ ________________________________________________________________________________
 // РЕШЕНИЕ:
 function isUnique(string) {
     const unique = new Set()
+
     for (const char of string) {
         if (unique.has(char)) {
             return false
