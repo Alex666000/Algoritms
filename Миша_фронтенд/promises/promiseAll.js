@@ -47,7 +47,7 @@ const pr1 = new Promise(resolve => resolve(1))
 const pr2 = new Promise((resolve) => resolve(2))
 
 // или
-/*console_enet_loop.log(promiseAll([
+/*console.log(promiseAll([
   Promise.resolve(1),
   Promise.resolve(2),
   Promise.resolve(3),
@@ -78,5 +78,5 @@ async function add2(x) {
   return x + (await promise_a) + (await promise_b); // 2 за две сек: (await promise_a) + (await promise_b)
 }
 
-add1(10).then(console_enet_loop.log);
-add2(20).then(console_enet_loop.log);*/
+add1(10).then(console.log);
+add2(20).then(console.log);*/

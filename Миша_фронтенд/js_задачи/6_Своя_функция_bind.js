@@ -11,7 +11,6 @@ Function.prototype.myBind = function (context, ...args) { // context - объе�
         return this.call(context, ...args.concat(rest)); // определяем с какой функцией мы работаем
     };
 };
-
 // Пример использования:
 function log(...props) {
     console.log(this.name, this.age, ...props);

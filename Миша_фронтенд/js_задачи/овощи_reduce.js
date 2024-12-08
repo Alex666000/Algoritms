@@ -32,7 +32,7 @@
 //   // Выход: {kiwi: 3, apple: 2, orange: 1}
 // }
 //
-// console_enet_loop.log(countElement(['kiwi', 'apple', 'kiwi', 'orange', 'kiwi', 'apple']))
+// console.log(countElement(['kiwi', 'apple', 'kiwi', 'orange', 'kiwi', 'apple']))
 
 
 // 1 способ:
@@ -52,7 +52,7 @@
 }
 // Выход: {kiwi: 3, apple: 2, orange: 1}
 
-console_enet_loop.log(countElem(['kiwi', 'apple', 'kiwi', 'orange', 'kiwi', 'apple'])) */
+console.log(countElem(['kiwi', 'apple', 'kiwi', 'orange', 'kiwi', 'apple'])) */
 
 
 // 2 Решение: --------------------------------------
@@ -69,4 +69,4 @@ console_enet_loop.log(countElem(['kiwi', 'apple', 'kiwi', 'orange', 'kiwi', 'app
   return res.length  // возвращающую количество гласных, которые содержатся в строке
 }
 
-console_enet_loop.log(glasses('morning'))*/
+console.log(glasses('morning'))*/

@@ -71,7 +71,7 @@ export const RandomList = () => {
         const data = await randomNumber();
         setNumber(data);
       } catch (err) {
-        console_enet_loop.log(err);
+        console.log(err);
       }
     };
 

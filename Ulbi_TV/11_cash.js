@@ -9,12 +9,12 @@ function cashFunction(fn) {
 
     return function (n) {
         if (cash[n]) { // если по ключу: n в объекте находится значение - то его и возвращаем
-            // console_enet_loop.log('Взято из кеша', cash[n])
+            // console.log('Взято из кеша', cash[n])
             return cash[n]
         }
         // иначе выполняем функцию и помещаем результат выполнения этой функции в переменную result
         let result = fn(n)
-        // console_enet_loop.log('Посчитала функция = ', result)
+        // console.log('Посчитала функция = ', result)
         cash[n] = result
         return result;
     };

@@ -11,8 +11,8 @@
 //   return null
 // }
 //
-// console_enet_loop.log(linearSearch(array, 2))
-// console_enet_loop.log('count = ', count)
+// console.log(linearSearch(array, 2))
+// console.log('count = ', count)
 
 /*
 Сложность О от n - n это кол-во элементов итераций (count) в массиве

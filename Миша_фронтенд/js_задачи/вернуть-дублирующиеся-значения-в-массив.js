@@ -52,10 +52,10 @@ console.log(findDublicateValues(nums));
 // };
 //
 // for (const fruit of myIterable) {
-//     console_enet_loop.log(fruit);
+//     console.log(fruit);
 // }
 //
-// console_enet_loop.log('Дублирующие значения:', findDublicateValues(nums));
+// console.log('Дублирующие значения:', findDublicateValues(nums));
 
 
 

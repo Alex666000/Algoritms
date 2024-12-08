@@ -1,14 +1,14 @@
 // 1 - легкое каррирование:
-// function sum(a) {
-//   return function(b) {
-//     return function(c) {
-//       return a + b + c;
-//     };
-//   };
-// }
-//
-// // Пример использования
-// console_enet_loop.log(sum(1)(2)(3)); // 6
+function sum(a) {
+  return function(b) {
+    return function(c) {
+      return a + b + c;
+    };
+  };
+}
+
+// Пример использования
+console.log(sum(1)(2)(3)); // 6
 
 
 // любые случаи каррирования:

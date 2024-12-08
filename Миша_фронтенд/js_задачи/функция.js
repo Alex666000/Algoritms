@@ -31,8 +31,8 @@ const input = [
 Пример:
 
 const obj = { a: { b: 2 } };
-console_enet_loop.log(obj?.a?.b); // 2
-console_enet_loop.log(obj?.c?.d); // undefined
+console.log(obj?.a?.b); // 2
+console.log(obj?.c?.d); // undefined
 ... (Spread/rest operator)
 
 Используется для работы с массивами или объектами:
@@ -41,51 +41,51 @@ javascript
 Копировать код
 const arr = [1, 2, 3];
 const newArr = [...arr, 4, 5];
-console_enet_loop.log(newArr); // [1, 2, 3, 4, 5]
+console.log(newArr); // [1, 2, 3, 4, 5]
 
 Сбор параметров в массив (rest):
 function sum(...nums) {
   return nums.reduce((acc, num) => acc + num, 0);
 }
-console_enet_loop.log(sum(1, 2, 3)); // 6
+console.log(sum(1, 2, 3)); // 6
 ?? (Nullish coalescing operator)
 
 Возвращает правый операнд, если левый равен null или undefined.
 Пример:
 
 const value = null ?? 'default';
-console_enet_loop.log(value); // 'default'
+console.log(value); // 'default'
 ||= (Logical OR assignment)
 
 Присваивает значение, если текущее значение переменной является ложным (false, 0, null, undefined, '').
 
 let a;
 a ||= 10;
-console_enet_loop.log(a); // 10
+console.log(a); // 10
 &&= (Logical AND assignment)
 
 Присваивает значение, если текущее значение переменной является истинным.
 let b = true;
 b &&= 'new value';
-console_enet_loop.log(b); // 'new value'
+console.log(b); // 'new value'
 Template literals (${foo})
 
 Используется для встраивания значений в строки.
 
 const name = 'John';
-console_enet_loop.log(`Hello, ${name}!`); // 'Hello, John!'
+console.log(`Hello, ${name}!`); // 'Hello, John!'
 structuredClone(bar)
 
 Функция для глубокого копирования объекта или массива, включая вложенные структуры.
 
 const obj = { a: 1, b: { c: 2 } };
 const clone = structuredClone(obj);
-console_enet_loop.log(clone); // { a: 1, b: { c: 2 } }
+console.log(clone); // { a: 1, b: { c: 2 } }
 someArray.at()
 
 Метод для доступа к элементу массива по индексу, поддерживает отрицательные индексы (обратный отсчёт).
 
 const arr = [10, 20, 30];
-console_enet_loop.log(arr.at(1)); // 20
-console_enet_loop.log(arr.at(-1)); // 30
+console.log(arr.at(1)); // 20
+console.log(arr.at(-1)); // 30
  */

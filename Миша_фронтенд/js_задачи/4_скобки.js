@@ -16,7 +16,7 @@
   // return changeStr // Выход: "How Can Mirrors Be Real If Our Eyes Aren't Real"
 }
 
-console_enet_loop.log(changeFirstChar('How can'))*/
+console.log(changeFirstChar('How can'))*/
 
 
 // 2) Дана строка состоящая из следующего набора скобок: (, ), {, }, [ и ]. Каждой открывающей скобке соответствует закрывающая, образуя пары.

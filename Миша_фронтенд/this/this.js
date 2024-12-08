@@ -24,8 +24,7 @@ user.hi(); // ? Ivan
 В данном случае стрелочная функция "hi" была объявлена внутри объекта "user", но она не создает привязку "this" к объекту "user".
 Значение "this" будет равно тому, что было в области видимости при создании стрелочной функции.
 3. В данном случае:
-Объявление объекта "user" происходит в глобальном контексте.
-Стрелочная функция "hi" наследует "this" из глобального контекста.
+Объявление объекта "user" происходит в глобальном контексте. Стрелочная функция "hi" наследует "this" из глобального контекста.
 4. Значение "this" в глобальном контексте:
 В браузере глобальный объект — это "window", а в Node.js — global.
 Следовательно, "this" внутри стрелочной функции будет равно глобальному объекту.
@@ -50,7 +49,7 @@ console.log(this.name); // undefined
 //   }
 // };
 //
-// console_enet_loop.log(userService.getFilteredUsers());
+// console.log(userService.getFilteredUsers());
 // Ответ: [] - тк this указывает на контекст declaration функции: function(user) {} - у деклареишн this всегда указывает на "виндоу" -
 // this будет гл.объект "window" а у него нет метода currentFilter - и мы возвращаем массив внутри которого undefined значит пустой []
 /*
@@ -71,7 +70,7 @@ const userService = {
   }
 };
 
-console_enet_loop.log(userService.getFilteredUsers());
+console.log(userService.getFilteredUsers());
 --------------------------------------
 () =>:
 const userService = {
@@ -87,7 +86,7 @@ const userService = {
   }
 };
 
-console_enet_loop.log(userService.getFilteredUsers());
+console.log(userService.getFilteredUsers());
 ---------------------------------------------
 self:
 const userService = {
@@ -104,7 +103,7 @@ const userService = {
     });
   }
 };
-console_enet_loop.log(userService.getFilteredUsers());
+console.log(userService.getFilteredUsers());
 ---------------------------------------------
 Чтобы код падал при выполнении === ошибка пишем 'use strict'
  */
@@ -127,4 +126,4 @@ console_enet_loop.log(userService.getFilteredUsers());
 // };
 //
 // counter.increment();
-// console_enet_loop.log('Current count:', counter.getCount());
+// console.log('Current count:', counter.getCount());

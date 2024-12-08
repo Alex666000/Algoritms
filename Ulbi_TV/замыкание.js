@@ -1,6 +1,6 @@
 // this
 // function greet(info) {
-//   console_enet_loop.log("Hello", this.name, info);
+//   console.log("Hello", this.name, info);
 // }
 //
 // const user1 = { name: "Elena" };

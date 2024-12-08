@@ -143,8 +143,8 @@ function getTreeValues2(node) {
 }
 
 
-console_enet_loop.log(getTreeValues(tree)) // => [1, 2, 3, 4, 5, 6]
-console_enet_loop.log(getTreeValues2(tree)) // => [1, 2, 3, 4, 5, 6]
+console.log(getTreeValues(tree)) // => [1, 2, 3, 4, 5, 6]
+console.log(getTreeValues2(tree)) // => [1, 2, 3, 4, 5, 6]
  */
 
 

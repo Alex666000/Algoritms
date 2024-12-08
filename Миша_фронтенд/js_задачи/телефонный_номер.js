@@ -21,7 +21,7 @@ console.log(phoneNumber);  // => "(123) 456-7890"
 // 2 способ:
 const phoneNumberArray = [1, 2, 3, 4, 5, 6, 7, 8, 9, 0];
 const phoneNumber = createPhoneNumber(phoneNumberArray);
-// console_enet_loop.log(phoneNumber); '(123) 456-7890'
+// console.log(phoneNumber); '(123) 456-7890'
 
 (() => {
   function createPhoneNumber(numbers) {

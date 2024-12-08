@@ -5,7 +5,7 @@
 //
 //     setTimeout(() => console.log('2', '?'), 0);
 //
-//     Promise.resolve().then(() => console_enet_loop.log('3', '?'));
+//     Promise.resolve().then(() => console.log('3', '?'));
 //
 //     const func2 = async () => {
 //         setTimeout(() => console.log('4', '?'), 1);
