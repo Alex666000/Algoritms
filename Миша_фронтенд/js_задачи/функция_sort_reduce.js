@@ -10,6 +10,23 @@ const input = [
   { value: 'xyz1', order: 1, expired: false },
   { value: 'abx2', order: 3, expired: false },
 ];
+
+// Решение:
+// const some = (array) => {
+//     array.sort((a, b) => a.order - b.order) // мутирует массив
+//
+//     return array.reduce((acc, obj) => { // array - придет измененный массив
+//         const { value, order, expired } = obj
+//
+//         if (!expired) {
+//             acc = acc + value.split().reverse().join('')
+//         }
+//
+//         return acc
+//     }, "") // const acc = ""
+// }
+//
+// console.log(some(input))
 // ------------------------------------------------------------------
 // ОПЕРАТОРЫ?
 // Задача 2 - Что за операторы и для чего?
