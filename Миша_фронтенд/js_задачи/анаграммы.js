@@ -1,20 +1,22 @@
-// Анаграммы анограммы: const words = ["listen", "silent", "enlist", "abc", "cab", "bca", "xyz", "yxz", "zxy", "hello"];
+// Анаграммы — это слова или фразы, составленные из одних и тех же букв, но в другом порядке.
+// Например:
+// "рак" и "акр" — это анаграммы.
+// "listen" и "silent" — это тоже анаграммы.
 const getAnagrams = (arr) => {
   const mapa = {};
 
-  arr.forEach((el) => {
+  arr.forEach((word) => {
     // Приводим слово к нижнему регистру, сортируем символы
-    const sortedWord = el.toLowerCase().split('').sort().join('');
-    console.log(sortedWord)
+    const sortedWord = word.toLowerCase().split('').sort().join('');
 
     // Группируем слова в массивы
     if (mapa[sortedWord]) {
-      mapa[sortedWord].push(el);
+      mapa[sortedWord].push(word);
     } else {
-      mapa[sortedWord] = [el];
+      mapa[sortedWord] = [word];
     }
   });
-
+  console.log(Object.values(mapa))
   // Преобразуем в массив, сортируем по длине и возвращаем только массивы слов
   return Object.values(mapa).sort((a, b) => a.length - b.length);
 };
