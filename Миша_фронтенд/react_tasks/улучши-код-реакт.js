@@ -214,18 +214,18 @@
 
 //   return (
 //     <ul className="productsWrapper">
-//       {products.map(({ name, description, id }) => (
-//         <li className="products" key={id}>
+//       {products.map(({ name, description, id: productId }) => (
+//         <li className="products" key={productId}>
 //           <h2 className="products-Item_green">{name}</h2>
 //           <p>{description}</p>
 //           <hr />
 //           <ul className="postList">
 //             {/* Отображаем список магазинов для каждого продукта */}
-//             {getShops(id).map(({ name: shopName, pricelist, id: shopId }) => (
+//             {getShops(id).map(({ name: shopName, pricelist, id: shopId, coordinate }) => (
 //               <li className="post_header" key={shopId}>
 //                 {shopName} -{" "}
 //                 {/* Проверяем, существует ли ключ в pricelist, чтобы избежать ошибки */}
-//                 {pricelist[shopId] ? pricelist[shopId] : "Цена не указана"} {currency}
+//                 {pricelist[shopId] ? pricelist[shopId] : "Цена не указана"} {currency} {coordinate}
 //               </li>
 //             ))}
 //           </ul>
