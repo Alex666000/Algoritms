@@ -1,3 +1,48 @@
+// Напишите свой стек на клаассе JS:
+class Stack {
+  constructor(maxSize) {
+    this.stack = [];
+    this.maxSize = maxSize;
+  }
+
+  isEmpty() {
+    return this.stack.length === 0;
+  }
+
+  isFull() {
+    return this.stack.length === this.maxSize;
+  }
+
+  size() {
+    return this.stack.length;
+  }
+
+  set item(element) {
+    if (this.isFull()) {
+      throw new Error('Stack is full');
+    }
+    return this.stack.push(element);
+  }
+
+  get item() {
+    if (this.isEmpty()) {
+      throw new Error('Stack is empty');
+    }
+    return this.stack.pop();
+  }
+
+// Два последних элемена были поменяны местами (как если бы им reverse()написали бы...)
+  swap() {
+    if (this.stack.length < 2) {
+      throw new Error('Problem');
+    }
+    const oneElem = this.stack.pop();
+    const twoElem = this.stack.pop();
+    this.stack.push(oneElem, twoElem);
+  }
+}
+
+
 // 3 "СТЭК" - ОЧЕРЕДь
 // Исходные данные задачи:
 // Реализовать класс Queue (очередь), в котором должны быть следующие методы:
