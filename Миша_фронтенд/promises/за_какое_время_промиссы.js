@@ -1,5 +1,4 @@
 // За какое время выполняться add1() и add2()?
-
 function resolveAfter2Seconds(x) {
   return new Promise((resolve) => {
     setTimeout(() => {
@@ -21,7 +20,8 @@ async function add2(x) {
   const promise_b = resolveAfter2Seconds(30);
   // с такои записью: (await promise_a) + (await promise_b); одновременно 2 промиса запустяться - будет 2 сек
   // такои синтаксис: return x + (await promise_a) + (await promise_b), переписать на Promise.all()...
-  const nums = await Promise.all([promise_a, promise_b])
+  const promisesArray = await Promise.all(promise_a, promise_b)
+  //ИЛИ: const promisesArray = await Promise.all(resolveAfter2Seconds(20),resolveAfter2Seconds(30))
   return x + nums[0] + nums[1];
   // return x + (await promise_a) + (await promise_b)
 }
