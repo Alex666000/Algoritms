@@ -80,4 +80,41 @@ Promise.all([sleep(666), sleep(777)])
   .then((promisesArray) => {
     promisesArray.forEach(pr => console.log(pr))
   })
+// ---------------------------------------------------------------------------------------------------------------------------------------
+// Все способы + Typescript
+const sleep = <T extends number>(ms: T): Promise<T> => {
+  return new Promise(resolve => setTimeout(() =>  resolve(ms), ms))
+}
 
+// then:
+
+// sleep(666)
+//     .then((res) => {
+//         console.log(res)
+//         return res
+//     })
+//     .then((res) => {
+//         return sleep(777)
+//     })
+//     .then((res2) => console.log(res2))
+
+// Или короче с Promise.all():
+
+// Promise.all([sleep(666), sleep(777)])
+//     .then((promisesResultsArray) => {
+//         promisesResultsArray.forEach(promise => console.log(promise))
+//     })
+
+// ----------------------------------------------------------------------------------------------------------------------------------------------
+const fetchData = async () => {
+  // const pr1 = await sleep(666)
+  // console.log(pr1)
+
+  // const pr2 = await sleep(777)
+  // console.log(pr2)
+// ----------------------------------------------------------------------------------------------------------------------------------------------
+  // Или короче с Promise.all():
+  const promisesArr = await Promise.all([sleep(666), sleep(777)])
+  promisesArr.forEach(pr => console.log(pr))
+}
+fetchData()
