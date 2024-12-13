@@ -10,7 +10,7 @@ function randomInteger(min, max) {
 const randomNumber = () => Promise.resolve(randomInteger(9000, 11000));
 const testData = [];
 
-export const randomList = () => {
+export const RandomList = () => {
   const [number, setNumber] = useState(0);
   const [scroll, setScroll] = useState(0);
 
@@ -101,9 +101,9 @@ export const RandomList = () => {
     </section>
   );
 
-Проблемы в текущем коде
+Проблемы в текущем коде:
 1. Нарушение правил React-хуков:
-В useEffect используется асинхронная функция напрямую (async () =>). Будет ошибка и хук эффекта сам по себе асинхронен.
+В "useEffect" используется асинхронная функция напрямую (async () => {} ) - Будет ошибка и хук эффекта сам по себе асинхронен.
 Решение: Вложить асинхронный код в функцию внутри useEffect на получение данных с сервера в fetchNumberData например
 2. Мутация внешнего массива:
 testData — это внешний массив, который изменяется внутри компонента("мапимся по нему"). Мутация внешних данных.
@@ -153,5 +153,4 @@ const [scroll, setScroll] = useState<number>(window.scrollY);
 Теперь значение scroll сразу соответствует текущей позиции прокрутки, и никакого "прыгания" или мерцания не будет.
 9) Для скролла добавил бы тротлинг
 10) Вынести в отдельные компоненты List ListItem
-
  */

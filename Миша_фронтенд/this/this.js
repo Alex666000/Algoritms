@@ -10,7 +10,7 @@ user.hi(); // ? Ivan
 // а если так:
 var user = {
   name: 'Ivan',
-  hi: () => { // у стрелки нет this, стрелка не создают свой контекст (берет вышестоящии контекст у "user" - но у "user" нет "this.user") - значит
+  hi: () => { // у стрелки нет "this", стрелка не создают свой контекст (берет вышестоящии контекст у "user" - но у "user" нет "this.user") - значит
     // this это window - у него нет свойства "name", значит будет "undefined"
     console.log(this.name);
     // К стрелки "bind call apply" применить нельзя, для стрелки не сработает - убрать, стрелку переписать
@@ -52,6 +52,8 @@ console.log(this.name); // undefined
 // console.log(userService.getFilteredUsers());
 // Ответ: [] - тк this указывает на контекст declaration функции: function(user) {} - у "анонимной-деклареишн" - this всегда указывает на
 // "виндоу" - this будет гл.объект "window" - а у него нет метода currentFilter
+// Сравнение user.status === this.currentFilter всегда возвращает false, потому что this.currentFilter не существует в текущем контексте.
+// Итог — filter ничего не возвращает, значит  результатом будет пустой массив
 // и мы возвращаем массив внутри которого "undefined" - значит пустой []
 /*
 - Когда this ссылается на "window" то делаем стрелку или "self" или "bind()".

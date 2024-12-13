@@ -18,19 +18,25 @@ function logMetric(date) {
 
 const Clock = () => {
   // const [currentDate, setCurrentDate] = useState(new Date().toISOString()); // так при каждом рендере срабатывать будет функция:
-  // new Date() - поэтому пишем так: через колбек: useState(() => (new Date()).toISOString()):
-  const [currentDate, setCurrentDate] = useState(() => (new Date()).toISOString()); // так: (new Date()) - чтобы вызвалась сначала функция
-  // new Date(), она вернет объект, потом у него вызываем метод: toISOString() - иначе не сработает
+  // new Date() - поэтому пишем так, чтобы значение "проинициализировалось" только при первом рендере: через колбек пишем:
+  // useState(() => (new Date()).toISOString()):
+  /*  Когда вы передаёте функцию в useState, она создаёт замыкание на тот контекст, в котором была объявлена.
+  Замыкание "захватывает" переменные окружения, что позволяет функции помнить, какие данные были доступны на момент её создания
+  */
+  const [currentDate, setCurrentDate] = useState(() => (new Date()).toISOString()); // так "в скобках": (new Date()) - чтобы вызвалась сначала
+  // функция new Date(), она вернет объект, потом у него вызываем метод: toISOString() - иначе не сработает
 
-  // Сохраняем последнюю дату между рендерами в "useRef"
+  // Сохраняем значение - "последнюю дату" между рендерами в "useRef" - чтобы значение между ререндерами не терялось а оставалось
   const dateRef = useRef(currentDate);
 
   // "интервал" - это саид эффект - поэтому в "useEffect"_е делаем..
   useEffect(() => {
     const interval = setInterval(() => {
+      // когда работаем с датами - именно так передавать на установку: (new Date()).toISOString() а не currentDate
+      // так как когда сетаем то передаем всегда новое значение: "время текущее", а не старое currentDate
       setCurrentDate((new Date()).toISOString());
-      // на каждую секунду обновлять надо "dateRef.current" (пишем в setInterval()) и обновленная дата придет
-      dateRef.current = new Date().toISOString() // в:logMetric(dateRef.current) при "unmount" :
+      // на каждую секунду обновлять надо "dateRef.current" (пишем в setInterval()) и обновленная "дата" придет
+      dateRef.current = new Date().toISOString() // и в:logMetric(dateRef.current) при "unmount" :
     }, 1000);
 
     // 'клипан'(очищаем чтобы не было утечек памяти.. срабатывает при 'анмаунте' компонента
@@ -41,17 +47,15 @@ const Clock = () => {
 
   // Чтобы разделить логику создадим еще один эффект
   useEffect(() => {
-    // logMetric(currentDate); // так берется дата из замыкания из "инишлстеита" === самая первая дата, а нам нужна последняя дата
+    // logMetric(currentDate); // так берется дата из замыкания из "инишлстеита" === самая первая дата, а нам нужна "последняя дата"
 
     // При анмаунте отправляем последнюю дату (ее обновили в первом эффекте)
     logMetric(dateRef.current);
-    return () => {
-    };
   }, []);
 
   return <h1>{currentDate}</h1>;
 };
-
+// ---------------------------------------------------------------------------------------------------------------------------------------
 // 2 Способ: через "requestAnimationFrame"
 // import { useEffect, useRef, useState } from 'react';
 // import { createRoot } from 'react-dom/client';

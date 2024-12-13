@@ -23,7 +23,7 @@ function Clicker() {
 }
 
 createRoot(document.getElementById('root') as HTMLElement).render(<Clicker_useState__ />); */
-// --------------------------------------------------------------------------------------------------
+// --------------------------------------------------------------------------------------------------------------------------------
 export default () => <div><Clicker/></div>;
 
 function Clicker() {
