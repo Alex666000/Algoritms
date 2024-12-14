@@ -36,20 +36,20 @@ console.log(this.name); // undefined
 // ЗАДАЧА: 1
 // что будет в консоль (https://interview.cups.online/live-coding/?room=6d002195-f1d5-4538-b9cf-69ddc684fbc6)
 
-// const userService = {
-//   currentFilter: 'active',
-//   users: [
-//     { name: 'Alex', status: 'active' },
-//     { name: 'Nick', status: 'deleted' }
-//   ],
-//   getFilteredUsers: function() {
-//     return this.users.filter(function(user) {
-//       return user.status === this.currentFilter;
-//     });
-//   }
-// };
-//
-// console.log(userService.getFilteredUsers());
+const userService = {
+  currentFilter: 'active',
+  users: [
+    { name: 'Alex', status: 'active' },
+    { name: 'Nick', status: 'deleted' }
+  ],
+  getFilteredUsers: function() {
+    return this.users.filter(function(user) {
+      return user.status === this.currentFilter;
+    });
+  }
+};
+
+console.log(userService.getFilteredUsers());
 // Ответ: [] - тк this указывает на контекст declaration функции: function(user) {} - у "анонимной-деклареишн" - this всегда указывает на
 // "виндоу" - this будет гл.объект "window" - а у него нет метода currentFilter
 // Сравнение user.status === this.currentFilter всегда возвращает false, потому что this.currentFilter не существует в текущем контексте.
@@ -114,7 +114,7 @@ console.log(userService.getFilteredUsers());
  */
 // ==========================================================================================================================================
 //    Что в консоле?                                                    ЗАДАЧА: 2
-// 1) const counter = {
+// const counter = {
 //   count: 0,
 //
 //   increment: function() {
