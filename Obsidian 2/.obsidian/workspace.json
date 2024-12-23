@@ -1,0 +1,231 @@
+{
+  "main": {
+    "id": "ded8a5c5b1b06f96",
+    "type": "split",
+    "children": [
+      {
+        "id": "e740383339f65b03",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "964fdb8bacef8589",
+            "type": "leaf",
+            "pinned": true,
+            "state": {
+              "type": "release-notes",
+              "state": {
+                "currentVersion": "1.7.6"
+              },
+              "pinned": true,
+              "icon": "lucide-file",
+              "title": "Release Notes 1.7.6"
+            }
+          },
+          {
+            "id": "3ac6f82ecdcfa2a4",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "200 вопросов/REACT/117. Reconcilation согласование Virtual DOM.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "117. Reconcilation согласование Virtual DOM"
+            }
+          }
+        ],
+        "currentTab": 1
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "fbdd622de59c1ccd",
+    "type": "split",
+    "children": [
+      {
+        "id": "6b9f984a07a34f90",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "5f8470f1314d101e",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical"
+              },
+              "icon": "lucide-folder-closed",
+              "title": "Файловый менеджер"
+            }
+          },
+          {
+            "id": "e2b30a71d49ff373",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "не подходит для обьектов",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              },
+              "icon": "lucide-search",
+              "title": "Поиск"
+            }
+          },
+          {
+            "id": "77e5e8d2f6ad530d",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {},
+              "icon": "lucide-bookmark",
+              "title": "Закладки"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 444.5
+  },
+  "right": {
+    "id": "4d7caf9251cbcb17",
+    "type": "split",
+    "children": [
+      {
+        "id": "f733e8a577de99a2",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "049b55c0404fb32b",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "200 вопросов/АРХИТЕКТУРА/Модульная.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-coming-in",
+              "title": "Обратные ссылки для Модульная"
+            }
+          },
+          {
+            "id": "9651d2476d02bf38",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "200 вопросов/АРХИТЕКТУРА/Модульная.md",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-going-out",
+              "title": "Исходящие ссылки из Модульная"
+            }
+          },
+          {
+            "id": "f7cd426f3d2cda18",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true
+              },
+              "icon": "lucide-tags",
+              "title": "Теги"
+            }
+          },
+          {
+            "id": "abccc0ff8f21337b",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "200 вопросов/REACT/117. Reconcilation согласование Virtual DOM.md"
+              },
+              "icon": "lucide-list",
+              "title": "Структура 117. Reconcilation согласование Virtual DOM"
+            }
+          }
+        ],
+        "currentTab": 3
+      }
+    ],
+    "direction": "horizontal",
+    "width": 340.5
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:Меню быстрого перехода": false,
+      "graph:Граф": false,
+      "canvas:Создать новый холст": false,
+      "daily-notes:Сегодняшняя заметка": false,
+      "templates:Вставить шаблон": false,
+      "command-palette:Открыть палитру команд": false
+    }
+  },
+  "active": "3ac6f82ecdcfa2a4",
+  "lastOpenFiles": [
+    "200 вопросов/REACT/117. Что такое Virtual DOM, зачем нужен, принцип работы, эвристический алгоритм.md",
+    "200 вопросов/REACT/117. Reconcilation согласование Virtual DOM.md",
+    "200 вопросов/TYPESCRIPT/87. Отличия type от interface.md",
+    "200 вопросов/REACT/132. Что такое контекст в реакт, хук useContext.md",
+    "200 вопросов/АРХИТЕКТУРА/FSD (Feature sliced design).md",
+    "200 вопросов/TYPESCRIPT/94. Тип never.md",
+    "Без названия.canvas",
+    "200 вопросов/TYPESCRIPT/88. Что такое Generics.md",
+    "200 вопросов/JAVASCRIPT/50. Как сделать обьект неизменяемым, методы Object.freeze Object.seal.md",
+    "200 вопросов/JAVASCRIPT/46. Принципы SOLID.md",
+    "200 вопросов/Общее/220. принципы DRY KISS YAGNI.md",
+    "200 вопросов/JAVASCRIPT/88. iframe.md",
+    "200 вопросов/Общее/193. Виды Уязвимостей в браузере и сетевые атаки.md",
+    "200 вопросов/Общее/187. Параметры настройки cookie (secure, httpOnly …).md",
+    "200 вопросов/Общее/184. Access и refresh токены, что это и где безопасно хранить.md",
+    "200 вопросов/Общее/165. Отличие REST от GRAPHQL.md",
+    "200 вопросов/JAVASCRIPT/58. Зачем нужны async defer и их отличия.md",
+    "200 вопросов/JAVASCRIPT/87. nextTick, process.nextTick это.md",
+    "200 вопросов/JAVASCRIPT/86. Что такое Гидрация.md",
+    "200 вопросов/JAVASCRIPT/81. requestAnimationFrame что это.md",
+    "200 вопросов/Общее/175. Какие есть способы оптимизации приложений.md",
+    "Вопросы/Паттерны/SOLID/Принцип открытости-закрытости.md",
+    "Вопросы/Паттерны/SOLID/Принцип инверсии зависимостей.md",
+    "Вопросы/Паттерны/SOLID/Принцип единственной ответственности.md",
+    "Вопросы/Паттерны/Шаблоны проектирования/Абстрактная фабрика.md",
+    "200 вопросов/АРХИТЕКТУРА/Модульная.md",
+    "Без названия",
+    "200 вопросов/REACT/118. Что такое React Fiber.md",
+    "attachments/Pasted image 20240728095638.png",
+    "attachments/Pasted image 20240728095544.png",
+    "200 вопросов/RTK Query & react-query",
+    "attachments/Pasted image 20240722102220.png",
+    "attachments/Pasted image 20240722102126.png",
+    "Без названия 1",
+    "200 вопросов/АРХИТЕКТУРА",
+    "attachments/Pasted image 20240519162813.png",
+    "attachments/Pasted image 20240519162750.png",
+    "attachments/Pasted image 20240511165228.png",
+    "attachments/Pasted image 20240511165044.png",
+    "attachments/Pasted image 20240511164444.png",
+    "attachments/Pasted image 20240511164439.png",
+    "200 вопросов/Общее",
+    "200 вопросов/HTML CSS",
+    "200 вопросов/REACT",
+    "200 вопросов/TYPESCRIPT",
+    "200 вопросов/JAVASCRIPT",
+    "200 вопросов",
+    "Untitled.canvas"
+  ]
+}
