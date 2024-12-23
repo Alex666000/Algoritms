@@ -18,3 +18,4 @@ function getProperty<T, K extends keyof T>(obj: T, key: K): T[K] {
 
 getProperty(X, "a");
 getProperty(X, "m"); // Ура! все верно!*/
+// ---------------------------------------------------------------------------------------------

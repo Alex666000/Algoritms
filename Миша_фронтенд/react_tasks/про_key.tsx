@@ -178,3 +178,5 @@ export const SwitchView = () => {
 //     </>
 //   );
 // };
+
+// 4 Способ использовать useContext()

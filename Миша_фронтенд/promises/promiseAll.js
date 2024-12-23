@@ -80,3 +80,21 @@ async function add2(x) {
 
 add1(10).then(console.log);
 add2(20).then(console.log);*/
+// ======================================================================================================================
+// https://www.youtube.com/watch?v=A5YpfpgEosQ 40 min
+/* 18. Напишите функцию реализующую функционал Promise.all */
+
+const test = new Array(5).fill().map((_, index) => index);
+
+const promises = test.map((item, index) =>
+  new Promise((resolve, reject) =>
+    setTimeout(() => resolve(index), index * 100)
+  )
+);
+
+// promises.push(new Promise((resolve, reject) => reject('MyError')));
+
+const promiseAll = /* Your code here! */;
+
+// promiseAll(promises).then(data => console.log(data));
+
