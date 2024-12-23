@@ -59,10 +59,24 @@ setTimeout(() => console.log(6));
 
 console.log(7);
 // 1 7 3 5 2 6 4
-
-
 // ===================================================================================================================================
+// Супер сложная!!!!!!!!! 23 мин https://www.youtube.com/watch?v=A5YpfpgEosQ - КАК РАЗМЫШЛЯТЬ В СЛОЖНЫХ ТАСКАХ!!!
+console.log(1);
 
+setTimeout(() => console.log(2));
+
+Promise.reject(3).catch(console.log); // эта краткая запись этого: Promise.reject(3).catch((res) => console.log(3));
+
+new Promise(resolve => setTimeout(resolve)).then(() => console.log(4));
+
+Promise.resolve(5).then(console.log);
+
+console.log(6);
+
+setTimeout(() => console.log(7), 0);
+// 1 6 3 5 2 4 7 - reject, resolve - это микрозадачи; макротаски: 2 - тк в коде: new Promise(resolve => setTimeout(resolve)).then(() => console.log(4));
+// колбек resolve => setTimeout(resolve)) выполняется синхронно и setTimeout попадет в макротаски после вывода "2" по очередности
+// добавления в очередь, то есть первее чем: setTimeout(() => console.log(7), 0);
 
 // ===================================================================================================================================
 
