@@ -82,19 +82,40 @@ add1(10).then(console.log);
 add2(20).then(console.log);*/
 // ======================================================================================================================
 // https://www.youtube.com/watch?v=A5YpfpgEosQ 40 min
-/* 18. Напишите функцию реализующую функционал Promise.all */
+/** 18. Напишите функцию, реализующую функционал Promise.all */
+const test: number[] = Array.from(Array(5), (_, index) => index);
 
-const test = new Array(5).fill().map((_, index) => index);
-
-const promises = test.map((item, index) =>
-  new Promise((resolve, reject) =>
+const promises = test.map((item, index) => {
+  return new Promise((resolve, reject) =>
     setTimeout(() => resolve(index), index * 100)
-  )
-);
+  );
+});
 
-// promises.push(new Promise((resolve, reject) => reject('MyError')));
+// Добавляем промис с ошибкой
+promises.push(new Promise((_, reject) => reject('MyError')));
 
-const promiseAll = /* Your code here! */;
+const promiseAll = (promises) => {
+  const result = [];
+  let counter = 0;
 
-// promiseAll(promises).then(data => console.log(data));
+  return new Promise((resolve, reject) => {
+    promises.forEach((promise, idx) => {
+      promise
+        .then((res) => {
+          result[idx] = res;
+          counter += 1;
+
+          if (counter === promises.length) {
+            resolve(result);
+          }
+        })
+        .catch(reject); // Если хотя бы один промис завершится с ошибкой
+    });
+  });
+};
+
+promiseAll(promises)
+  .then((data) => console.log('Resolved:', data))
+  .catch((err) => console.error('Rejected:', err));
+
 
