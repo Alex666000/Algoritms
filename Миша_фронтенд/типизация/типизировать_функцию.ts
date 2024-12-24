@@ -36,7 +36,7 @@ const promises = test.map((item, index) => {
 // дненерик используем для именно того, чего я не знаю, а не знаю что возвращает каждый промис (какие данные)
 // Т ни от чего не "экстендится", тк не знаем какои тип данных возвращает промис
 // "Массив промисов зарезолвленных каким-то значением"
-const promiseAll = <T,>(promises: Array<Promise<T>>): Promise<T[]> => {
+const promiseAll = <T, >(promises: Array<Promise<T>>): Promise<T[]> => {   // const promiseAll = <T,>(promises: Array<Promise<T>>): Promise<Array<T>> => {
   const results: Array<T> = [];
   let counter = 0;
 
