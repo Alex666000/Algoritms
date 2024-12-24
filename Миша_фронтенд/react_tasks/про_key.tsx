@@ -1,4 +1,7 @@
 // https://codesandbox.io/p/sandbox/c7c43m?file=%2Fsrc%2Findex.tsx%3A9%2C24 Sandbox 35 мин
+
+// "При клике в родительскои компоненте меняем стеит дочерний компоненты"
+
 // Исходники:
 // При смене viewState не сбрасывается count - Как сделать так, чтобы счётчик сбрасывался на "0" - при клике на кнопку "toggle page"
 // Сделай все возможные варианты
@@ -129,7 +132,7 @@ export const SwitchView = () => {
 //   const increment = () => {
 //     setCount((prev) => prev + 1);
 //   };
-//
+//   // useEffect гарантирует, что функция setCount(0) передаётся родителю только после монтирования компонента Counter или изменения пропа onReset.
 //   useEffect(() => {
 //     onReset(() => setCount(0));
 //   }, [onReset]);
@@ -159,7 +162,9 @@ export const SwitchView = () => {
 //
 // export const SwitchView = () => {
 //   const [viewState, setViewState] = useState<"one" | "two">("one");
-//   const resetRef = useRef<() => void | null>(null);
+//    // useRef является синхронным. Это означает, что изменения, внесённые в объект ref, будут немедленно доступны в текущем рендере,
+//    // без необходимости ожидания следующего рендера, как в случае с useState(Обновления состояния через useState асинхронны и могут быть отложены React.)
+//   const resetRef = useRef<() => void | null>(null); // ссылка, где хранится текущая функция "сброса состояния дочернего компонента"
 //
 //   const togglePage = () => {
 //     resetRef.current();
