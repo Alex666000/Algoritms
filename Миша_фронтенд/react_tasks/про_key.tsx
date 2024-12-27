@@ -185,3 +185,62 @@ export const SwitchView = () => {
 // };
 
 // 4 Способ использовать useContext()
+// 5 Способ использовать useImperativeHandle()
+// import React, { useState, FC, useEffect, useRef, useImperativeHandle, forwardRef } from "react";
+//
+// const Clicked: FC<{ count: number }> = ({ count }) => {
+//   return <p>Clicked: {count}</p>;
+// };
+//
+// const Counter = forwardRef<any, { onReset: (fn: () => void) => void }>(({ onReset }, ref) => {
+//   const [count, setCount] = useState(0);
+//
+//   const increment = () => {
+//     setCount((prev) => prev + 1);
+//   };
+//
+//   useImperativeHandle(ref, () => ({
+//     reset() {
+//       setCount(0);
+//     }
+//   }));
+//
+//   useEffect(() => {
+//     onReset(() => setCount(0));
+//   }, [onReset]);
+//
+//   return (
+//     <div>
+//       <button onClick={increment}>Click me!</button>
+//       <Clicked count={count} />
+//     </div>
+//   );
+// });
+//
+// const Page: FC<{ page: string; counterRef: any }> = ({ page, counterRef }) => {
+//   return (
+//     <div>
+//       page: {page}
+//       <Counter ref={counterRef} onReset={() => {}} />
+//     </div>
+//   );
+// };
+//
+// export const SwitchView = () => {
+//   const [viewState, setViewState] = useState<"one" | "two">("one");
+//   const counterRef = useRef(null);
+//
+//   const togglePage = () => {
+//     if (counterRef.current) {
+//       counterRef.current.reset();
+//     }
+//     setViewState((prev) => (prev === "one" ? "two" : "one"));
+//   };
+//
+//   return (
+//     <>
+//       <button onClick={togglePage}>toggle page</button>
+//       <Page page={viewState} counterRef={counterRef} />
+//     </>
+//   );
+// };
